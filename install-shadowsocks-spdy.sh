@@ -173,7 +173,9 @@ warnNoEnterReturnKey
 echoS "Git Cloning project"
 cd ${gitRepoPath}
 rm -rf ${gitRepoFreeServerPath}
-git clone ${freeServerRepo}
+git clone ${freeServerRepo} ${freeServerInstallationFolderName}
+
+
 
 find ./ -name "*.sh" | xargs chmod +x
 cd free-server
