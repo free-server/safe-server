@@ -2,7 +2,7 @@
 
 source /opt/.global-utils.sh
 
-port=80
+port=${miscWebsitePort}
 
 restartPortService() {
     port=$1

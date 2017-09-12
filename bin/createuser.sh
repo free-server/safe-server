@@ -28,3 +28,14 @@ if [[ ! -z ${isToInstallOcservCiscoAnyConnect} ]];then
 fi
 
 echoS "All done. HTTP2/SPDY, Shadowsocks-R account has been created for user $user"
+
+echoS "================================================================================"
+echo ""
+echo "Next Step: Setup Tutorial for HTTP2"
+echo ""
+echo ""
+echo "Tutorial WebLink:"
+echo ""
+echo "https://${freeServerName}/#http2"
+echo ""
+echoS "================================================================================"

@@ -105,7 +105,7 @@ echo ""
 echo ""
 echo "SSR QR Code WebLink:"
 echo ""
-echo "http://${freeServerName}/#${ssrQrSchemeRaw}"
+echo "https://${freeServerName}/#${ssrQrSchemeRaw}"
 echo ""
 echoS "================================================================================"
 

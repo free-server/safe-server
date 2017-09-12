@@ -39,6 +39,7 @@ export binDir=${gitRepoFreeServerPath}/bin
 export setupToolsDir=${gitRepoFreeServerPath}/setup-tools
 export miscDir=${gitRepoFreeServerPath}/misc
 export configSampleDir=${gitRepoFreeServerPath}/config-sample
+export miscWebsitePort=443
 
 
 # for configration samples

@@ -33,19 +33,35 @@
 <p>You shall know the truth, and the truth shall make you free. 你们必晓得真理, 真理必叫你们得自由 <a
         href="http://cnbible.com/john/8-32.htm">John 8:32</a></p>
 <hr/>
-<h1 class="fs-hide qr-code-title">
-    Your SSR QR code:
-</h1>
-<div id="qrcode_text" class="fs-hide">
-    <a id="qrcode_link"></a>
+
+<div class="http2 fs-hide">
+    <p class="tutorial-link">
+        <a href="./tutorial/chrome-1.htm">Mac/Windows/Linux 设置教程</a>
+    </p>
 </div>
-<div id="qrcode" class="fs-hide"></div>
+
+<div class="ssr fs-hide">
+    <p class="tutorial-link">
+        <a>iPhone / iPad 设置教程 (TBD)</a>
+        <a>Android 安卓设置教程 (TBD)</a>
+    </p>
+    <p class="qr-code-title">
+        Your SSR QR code:
+    </p>
+    <div id="qrcode_text">
+        <a id="qrcode_link"></a>
+    </div>
+    <div id="qrcode">
+    </div>
+
+</div>
+
 </body>
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="qrcode.min.js"></script>
 <script type="text/javascript">
 
-    generateQsCode();
+    main();
 
     function makeCodeForSSR(pureString) {
 
@@ -53,7 +69,7 @@
             return
         }
 
-        $('.fs-hide').removeClass('fs-hide');
+        $('.ssr').removeClass('fs-hide');
 
         var targetDomNode = document.getElementById("qrcode");
         var targetLinkDomNode = document.getElementById("qrcode_link");
@@ -77,11 +93,19 @@
         return location.hash.replace(/^#/, '')
     }
 
-    function generateQsCode() {
+    function showHttp2Tutorial() {
+        $('.http2').removeClass('fs-hide');
+    }
 
+    function main() {
         var hash = getTextFromHash();
 
-        if (!hash) {
+        if (!hash ) {
+            return
+        }
+
+        if (hash.match(/^http2/)) {
+            showHttp2Tutorial();
             return
         }
 
