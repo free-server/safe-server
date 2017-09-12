@@ -98,10 +98,10 @@ Starting SSR instance...\
 
 echoS "================================================================================"
 echo ""
-echo "SSR QR Scheme (For generating SSR QR Code):"
-echo ""
-echo ${ssrQrScheme}
-echo ""
+#echo "SSR QR Scheme (For generating SSR QR Code):"
+#echo ""
+#echo ${ssrQrScheme}
+#echo ""
 echo ""
 echo "SSR QR Code WebLink:"
 echo ""
