@@ -19,6 +19,10 @@ export globalUtilFile=$0
 
 export bashrc=~/.bashrc
 
+if [[ -f  ${bashrc} ]];then
+    source ${bashrc}
+fi
+
 export freeServerCodeRepoName=safe-server
 export freeServerGithubUserName=free-server
 export freeServerProjectUrl=https://github.com/${freeServerGithubUserName}/${freeServerCodeRepoName}
@@ -39,7 +43,14 @@ export binDir=${gitRepoFreeServerPath}/bin
 export setupToolsDir=${gitRepoFreeServerPath}/setup-tools
 export miscDir=${gitRepoFreeServerPath}/misc
 export configSampleDir=${gitRepoFreeServerPath}/config-sample
-export miscWebsitePort=443
+
+if [[ -z ${miscWebsitePortHttps} ]]; then
+    export miscWebsitePortHttps=443
+fi
+
+if [[ -z ${miscWebsitePortHttp} ]]; then
+    export miscWebsitePortHttp=80
+fi
 
 
 # for configration samples

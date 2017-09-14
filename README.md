@@ -41,6 +41,13 @@ bash install-shadowsocks-spdy.sh
 Note that, the script could be redeployed/reinstalled on your Ubuntu without worries on losing any old Shadowsocks-R and HTTP2/SPDY account or password.
 It backs them up if found any before execute re-installation.
 
+### Do not take 8443 and 80
+```bash
+sudo su
+echo "export miscWebsitePortHttps=8443" >> ~/.bashrc
+echo "export miscWebsitePortHttp=8080" >> ~/.bashrc
+```
+
 ## Alternative TCP Optimized Installation (Chinese)
 Google: [TCP BBR](https://doub.io/wlzy-16/)
 
