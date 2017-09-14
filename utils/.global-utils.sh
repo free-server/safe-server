@@ -52,6 +52,13 @@ if [[ -z ${miscWebsitePortHttp} ]]; then
     export miscWebsitePortHttp=80
 fi
 
+httpsPortSuffix=""
+if [[ "${miscWebsitePortHttps}" != "443" ]]; then
+    httpsPortSuffix=":${miscWebsitePortHttps}"
+fi
+
+httpsFreeServerUrl="https://${freeServerName}${httpsPortSuffix}"
+
 
 # for configration samples
 export configDir=${freeServerRoot}/config
