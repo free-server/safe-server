@@ -57,7 +57,7 @@ if [[ "${miscWebsitePortHttps}" != "443" ]]; then
     httpsPortSuffix=":${miscWebsitePortHttps}"
 fi
 
-httpsFreeServerUrl="https://${freeServerName}${httpsPortSuffix}"
+export httpsFreeServerUrl="https://${freeServerName}${httpsPortSuffix}"
 
 
 # for configration samples
