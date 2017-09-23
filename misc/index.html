@@ -4,8 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Free-Server is online</title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <style>
+        main {
+            margin: 0 auto;
+            width: 960px;
+            word-wrap: break-word;
+        }
+
+        .color-light-blue,
+        a[href] {
+            color: #4488ff;
+        }
+
         .fs-hide {
             display: none;
         }
@@ -16,7 +29,7 @@
 
         #qrcode_text {
             margin: 15px;
-            text-align: center;
+            text-align: left;
         }
 
         #qrcode {
@@ -29,33 +42,37 @@
     <title>You shall know the truth, and the truth shall make you free. 你们必晓得真理, 真理必叫你们得自由</title>
 </head>
 <body>
-<h1 style="color: #4488ff;">Free Server is online :)</h1>
-<p>You shall know the truth, and the truth shall make you free. 你们必晓得真理, 真理必叫你们得自由 <a
-        href="http://cnbible.com/john/8-32.htm">John 8:32</a></p>
-<hr/>
+<div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+        <h1 class="color-light-blue">Free Server is online :)</h1>
+        <p>You shall know the truth, and the truth shall make you free. 你们必晓得真理, 真理必叫你们得自由 <a
+                href="http://cnbible.com/john/8-32.htm">John 8:32</a></p>
+        <hr/>
 
-<div class="http2 fs-hide">
-    <p class="tutorial-link">
-        <a href="./tutorial/chrome-1.htm">Mac/Windows/Linux 设置教程</a>
-    </p>
+        <div class="http2 fs-hide">
+            <p class="tutorial-link">
+                <a href="./tutorial/chrome-1.htm">Mac/Windows/Linux 设置教程</a>
+            </p>
+        </div>
+
+        <div class="ssr fs-hide">
+            <p class="tutorial-link">
+            <h3><a href="./tutorial/ios-potatso.htm">iPhone / iPad Potatso Tutorial —— iPhone 土豆丝设置教程</a></h3>
+            <h3><a href="./tutorial/android-ssr.htm">Android Shadowsocks-R Tutorial —— 安卓番茄设置教程</a></h3>
+            </p>
+            <p class="qr-code-title">
+            <h3>你的 SSR 快速配置二维码（iPhone / iPad 土豆丝和 Android 安卓通用）:</h3>
+            </p>
+            <div id="qrcode_text">
+                <a id="qrcode_link"></a>
+            </div>
+            <div id="qrcode">
+            </div>
+
+        </div>
+
+    </main>
 </div>
-
-<div class="ssr fs-hide">
-    <p class="tutorial-link">
-        <a>iPhone / iPad 设置教程 (TBD)</a>
-        <a>Android 安卓设置教程 (TBD)</a>
-    </p>
-    <p class="qr-code-title">
-        Your SSR QR code:
-    </p>
-    <div id="qrcode_text">
-        <a id="qrcode_link"></a>
-    </div>
-    <div id="qrcode">
-    </div>
-
-</div>
-
 </body>
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="qrcode.min.js"></script>
@@ -100,7 +117,7 @@
     function main() {
         var hash = getTextFromHash();
 
-        if (!hash ) {
+        if (!hash) {
             return
         }
 
