@@ -44,6 +44,25 @@ export setupToolsDir=${gitRepoFreeServerPath}/setup-tools
 export miscDir=${gitRepoFreeServerPath}/misc
 export configSampleDir=${gitRepoFreeServerPath}/config-sample
 
+# for configration samples
+export configDir=${freeServerRoot}/config
+export configDirBackup=/opt/free-server-config-bak
+export configDirBackupDate=/opt/free-server-config-bak-$currentDate
+
+export freeServerGlobalEnv=${configDir}/envrc
+
+if [[ -f ${freeServerGlobalEnv} ]]; then
+    source ${freeServerGlobalEnv}
+fi
+
+export SPDYConfig="${configDir}/SPDY.conf"
+export shadowsocksRConfig="${configDir}/SSR.conf"
+
+
+#####################
+## Start of main configuration after sourcing Global Env (bashrc + freeserver envrc)
+#####################
+
 if [[ -z ${miscWebsitePortHttps} ]]; then
     export miscWebsitePortHttps=443
 fi
@@ -58,23 +77,6 @@ if [[ "${miscWebsitePortHttps}" != "443" ]]; then
 fi
 
 export httpsFreeServerUrl="https://${freeServerName}${httpsPortSuffix}"
-
-
-# for configration samples
-export configDir=${freeServerRoot}/config
-export configDirBackup=/opt/free-server-config-bak
-export configDirBackupDate=/opt/free-server-config-bak-$currentDate
-
-export freeServerGlobalEnv=${configDir}/envrc
-
-if [[ -f ${freeServerGlobalEnv} ]]; then
-    source ${freeServerGlobalEnv}
-fi
-
-
-export SPDYConfig="${configDir}/SPDY.conf"
-export shadowsocksRConfig="${configDir}/SSR.conf"
-
 
 # let's encrypt
 export letsEncryptCertFolder=/etc/letsencrypt/live/$freeServerName
@@ -910,9 +912,33 @@ isSquidRunning(){
     if [[ -z ${isSquidRestarted} ]];then
         echoErr "[ERROR]: Squid is not running."
         echoErr "[ERROR]: Run 'ps aux | grep squid' for more info"
+
+        squidCacheLog=/var/log/squid/cache.log
+        squid3CacheLog=/var/log/squid3/cache.log
+
+        echoErr "[ERROR]: Log of ${squidCacheLog} and ${squid3CacheLog}"
+
+        if [[ -f ${squidCacheLog} ]];then
+            cat ${squidCacheLog}
+        fi
+
+        if [[ -f ${squid3CacheLog} ]];then
+            cat ${squid3CacheLog}
+        fi
+
     fi
 }
 export -f isSquidRunning
+
+isSSRRunning(){
+    sleep 3
+    isProcessRunning=$(ps aux | awk '$0~v' v="-c\\ ${shadowsocksRConfigJson}")
+
+    if [[ -z ${isProcessRunning} ]]; then
+        echoErr "[ERROR]: SSR is not running."
+    fi
+}
+export -f isSSRRunning
 
 isLetsEncryptInstalled(){
 

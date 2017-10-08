@@ -53,5 +53,6 @@ for i in $(cat "${SPDYConfig}"); do
 
 done
 
+isSquidRunning
 
 

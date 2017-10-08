@@ -20,6 +20,6 @@ fi
 removeLineInFile  ${SPDYConfig} "${SPDYName},${SPDYPassword},${SPDYPort}"
 removeLineInFile  ${SPDYSquidPassWdFile} "${SPDYName}:"
 
-${binDir}/restart-spdy-nghttpx-squid.sh
+${binDir}/restart-spdy-nghttpx-squid.sh > /dev/null 2>&1
 
 echoS "HTTP2/SPDY deleted for ${SPDYName} from ${SPDYConfig} and ${SPDYSquidPassWdFile}"

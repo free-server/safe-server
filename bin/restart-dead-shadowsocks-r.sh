@@ -16,9 +16,6 @@ isProcessRunning=$(ps aux | awk '$0~v' v="-c\\ ${shadowsocksRConfigJson}")
 if [[ -z ${isProcessRunning} ]]; then
     echo -e "Restart SSR with $shadowsocksRConfigJson" | wall
     python server.py -c ${shadowsocksRConfigJson} >> /dev/null 2&>1 &
-
-else
-    echo "Skipped Restart SSR since it is already stated. Process: ${isProcessRunning}"
 fi
 
 #
@@ -35,3 +32,5 @@ fi
 #  fi
 #
 #done
+
+isSSRRunning

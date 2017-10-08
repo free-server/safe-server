@@ -8,30 +8,21 @@ then
 
   exit 0
 fi
+
 echoS "Restart SPDY Squid3"
-killall squid3
-killall squid
 
-squid3 -k  kill
+killall squid3 > /dev/null 2>&1
+killall squid > /dev/null 2>&1
 
-squid3 -z
-squid3 -z -f ${SPDYSquidConfig}
+squid3 -k  kill > /dev/null 2>&1
 
-squid3 -f ${SPDYSquidConfig} -k kill
+squid3 -z > /dev/null 2>&1
+squid3 -z -f ${SPDYSquidConfig} > /dev/null 2>&1
+
+squid3 -f ${SPDYSquidConfig} -k kill > /dev/null 2>&1
 sleep 2
 
-squid3 -f ${SPDYSquidConfig}
-squid3 -f ${SPDYSquidConfig} -k reconfigure
-
-squidCacheLog=/var/log/squid/cache.log
-squid3CacheLog=/var/log/squid3/cache.log
-
-if [[ -f ${squidCacheLog} ]];then
-    cat ${squidCacheLog}
-fi
-
-if [[ -f ${squid3CacheLog} ]];then
-    cat ${squid3CacheLog}
-fi
+squid3 -f ${SPDYSquidConfig} > /dev/null 2>&1
+squid3 -f ${SPDYSquidConfig} -k reconfigure > /dev/null 2>&1
 
 isSquidRunning

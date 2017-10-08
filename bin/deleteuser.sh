@@ -21,4 +21,7 @@ fi
 
 ${binDir}/deleteuser-shadowsocks-r.sh "${shadowsocksRPort}" "${pass}"
 ${binDir}/deleteuser-spdy.sh "${user}" "${pass}" "${SPDYPort}"
-${binDir}/deleteuser-ocserv.sh "${user}"
+
+if [[ ! -z ${isToInstallOcservCiscoAnyConnect} ]];then
+    ${binDir}/deleteuser-ocserv.sh "${user}"
+fi
