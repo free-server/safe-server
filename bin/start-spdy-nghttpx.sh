@@ -68,8 +68,7 @@ startNgHttpX() {
 #  --backend=\"${SPDYForwardBackendSquidHost},${SPDYForwardBackendSquidPort}\" \
 #  \"${letsEncryptKeyPath}\" \"${letsEncryptCertPath}\""
 
-  echo ${startCommand}
-  eval ${startCommand}
+  eval ${startCommand} > /dev/null 2>&1
 
 }
 
