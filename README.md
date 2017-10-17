@@ -4,6 +4,12 @@ No Info for you for safety
 
 ## Installation
 
+### Prerequisites
+
+* Amazon EC2 / Vultr / Linode or Microsoft Azure; Ubuntu Server 16-17 (14 LTS may work as well)
+* Memory 1Gb+;
+* A Domain pointing to the Ubuntu server IP (A record - IPV4) and its email
+
 ### Average usage
 
 ```bash
@@ -77,6 +83,10 @@ export shadowsocksRObfuscate="tls1.2_ticket_auth"
 export shadowsocksRProtocol="auth_sha1_v4"
 export shadowsocksRObfuscateParam="s3.amazonaws.com"
 ```
+
+* HTTP2 / SPDY
+
+After you created a user, you should know.
 
 ## Delete User
 
