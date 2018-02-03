@@ -8,6 +8,8 @@ No Info for you for safety
 
 * Amazon EC2 / Vultr / Linode or Microsoft Azure; Ubuntu Server 16-17 (14 LTS may work as well)
 * Memory 1Gb+;
+* Firewall inbound: TCP 22, 80, 443 and all ports you want to use in SSR / HTTP2. Say 10000-30000
+* Firewall outbound: all ports
 * A Domain pointing to the Ubuntu server IP (A record - IPV4) and its email
 
 ### Average usage

@@ -949,3 +949,34 @@ isLetsEncryptInstalled(){
 }
 export -f isLetsEncryptInstalled
 
+isSPDYUserExisting(){
+
+    username=$1
+
+    isExistInConfigFile=$(gawk "/^${username},/ {print}" ${SPDYConfig})
+    isExistInPassWdile=$(gawk "/^${username}:/ {print}" ${SPDYSquidPassWdFile})
+
+    if [[ ! -z ${isExistInConfigFile} || ! -z ${isExistInPassWdile}  ]]; then
+        echo ${isExistInConfigFile}
+        echo ${isExistInPassWdile}
+    fi
+
+}
+export -f isSPDYUserExisting
+
+
+isSSRUserExisting(){
+
+    port=$1
+    password=$2
+
+    isPortExistInConfigFile=$(gawk "/^${port},/ {print}" ${shadowsocksRConfig})
+    isPassExistInConfigFile=$(gawk "/,${password},/ {print}" ${shadowsocksRConfig})
+
+    if [[ ! -z ${isExistInConfigFile} || ! -z ${isExistInPassWdile}  ]]; then
+        echo ${isPortExistInConfigFile}
+        echo ${isPassExistInConfigFile}
+    fi
+
+}
+export -f isSSRUserExisting
