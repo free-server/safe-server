@@ -30,6 +30,8 @@ remark = "tomato proxy"
 [RULESET.tomato]
 name = "Tomato's"
 rules = [
+    "DOMAIN-MATCH, potatso, REJECT",
+
     "DOMAIN-SUFFIX, m.me, PROXY",
     "DOMAIN-SUFFIX, icloud.com, PROXY",
     "DOMAIN-SUFFIX, messenger.com, PROXY",
