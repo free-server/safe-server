@@ -150,8 +150,8 @@ fi
 export nghttpxUploadLimit="$((bandwidthPerUser*8*1024))"
 export nghttpxDownloadLimit="$((bandwidthPerUser*8*1024))"
 
-export SPDYNgHttp2DownloadLink="https://github.com/nghttp2/nghttp2/releases/download/v1.24.0/nghttp2-1.24.0.tar.gz"
-export SPDYNgHttp2FolderName="nghttp2-1.24.0"
+export SPDYNgHttp2DownloadLink="https://github.com/nghttp2/nghttp2/releases/download/v1.31.0/nghttp2-1.31.0.tar.gz"
+export SPDYNgHttp2FolderName="nghttp2-1.31.0"
 export SPDYNgHttp2TarGzName="${SPDYNgHttp2FolderName}.tar.gz"
 export SPDYSpdyLayDownloadLink="https://github.com/tatsuhiro-t/spdylay/releases/download/v1.4.0/spdylay-1.4.0.tar.gz"
 export SPDYSpdyLayFolderName="spdylay-1.4.0"
