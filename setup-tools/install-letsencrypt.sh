@@ -47,6 +47,7 @@ installLetsencrypt() {
 
 #    git clone https://github.com/letsencrypt/letsencrypt ./ 2>&1 >> ${loggerStdoutFile}
 #    ./letsencrypt-auto --help --agree-tos 2>&1 >> ${loggerStdoutFile}
+  apt-get install -y software-properties-common 2>&1 >> ${loggerStdoutFile}
   add-apt-repository -y ppa:certbot/certbot 2>&1 >> ${loggerStdoutFile}
   apt-get -y update 2>&1 >> ${loggerStdoutFile}
   #apt-get install -y letsencrypt  2>&1 >> ${loggerStdoutFile}
