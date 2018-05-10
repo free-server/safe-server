@@ -103,6 +103,10 @@ sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh test1 test123 10000
 
 ```
 
+## Client setup
+
+* After User created, you should see Terminal echo with client setup guide
+
 ## License
 
 MIT

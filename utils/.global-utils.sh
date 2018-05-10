@@ -432,7 +432,7 @@ export -f getIp
 #
 # @param String $1 is the url of file to downlaod
 # @param String $2 is the folder to store
-# @example downloadFileToFolder http://www.xiaofang.me/some.zip ~/free-server
+# @example downloadFileToFolder http://server1.free-server.me/some.zip ~/free-server
 #####
 downloadFileToFolder(){
   echo "[$FUNCNAME] Prepare to download file $1 into Folder $2"
@@ -735,7 +735,7 @@ export -f setUserCountPerServer
 # get current server name
 setServerName() {
 
-  serverName=$(getUserInput "Input \x1b[46m Server Domain \x1b[0m (e.g. vpn.xiaofang.me): " non-empty 3)
+  serverName=$(getUserInput "Input \x1b[46m Server Domain \x1b[0m (e.g. server1.free-server.me): " non-empty 3)
 
   if [[ -z ${serverName} ]]; then
 

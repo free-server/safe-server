@@ -1,5 +1,5 @@
 ruleSets:
-- name: gfwlist_xiaofang18_10_2016
+- name: gfwlist_freeserver18_10_2016
   rules: 
   - IP-CIDR,192.168.0.0/16,DIRECT
   - IP-CIDR,10.0.0.0/8,DIRECT
@@ -16,8 +16,6 @@ ruleSets:
 
 
 
-
-  - DOMAIN-SUFFIX,xiaofang.me,DIRECT
 
   - DOMAIN-SUFFIX,icloud-analysis.com,REJECT
   - DOMAIN-SUFFIX,sax.sina.cn,REJECT
@@ -4470,10 +4468,10 @@ ruleSets:
 
 
 proxies:
-- name: xiaofang18_10_2016_potato
+- name: freeserver18_10_2016_potato
   type: SSR
   port: 10000
-  host: xiaofang.me
+  host: server1.free-server.me
   password: 00000
   encryption: aes-256-cfb
   protocol: auth_sha1_v4
@@ -4481,11 +4479,11 @@ proxies:
   obfus_param: aws.amazon.com
 
 configGroups:
-- name: xiaofang18_10_2016_potato
+- name: freeserver18_10_2016_potato
   defaultToProxy: false
-  proxy: xiaofang18_10_2016_potato
+  proxy: freeserver18_10_2016_potato
   dns: 114.114.114.114
   ruleSets: 
-  - gfwlist_xiaofang18_10_2016
+  - gfwlist_freeserver18_10_2016
 
 
