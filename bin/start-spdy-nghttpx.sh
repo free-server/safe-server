@@ -21,7 +21,7 @@ showHelp() {
 
 commonCheck() {
   if [[ ! -s ${SPDYConfig} ]]; then
-    echoS "The SPDY config file ${SPDYConfig} is not found . Exit" "stderr"
+    echoS "The HTTP2 config file ${SPDYConfig} is not found . Exit" "stderr"
     exit 1
   fi
 

@@ -69,7 +69,7 @@ echo ${password} | htpasswd -i ${SPDYSquidPassWdFile} ${username}
 ${binDir}/restart-dead-spdy-nghttpx-squid.sh
 #${binDir}/restart-spdy-nghttpx-squid.sh
 
-echoS "SPDY account created with \n\
+echoS "HTTP/2 account created with \n\
 Username: $username \n\
 Password: $password \n\
 Port: $port \n\

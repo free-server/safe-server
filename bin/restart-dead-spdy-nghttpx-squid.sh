@@ -9,7 +9,7 @@ then
 fi
 
 if [[ ! -f ${SPDYConfig} ]]; then
-  echoS "The SPDY config file ${SPDYConfig} is not found . Exit" "stderr"
+  echoS "The HTTP2 config file ${SPDYConfig} is not found . Exit" "stderr"
   exit 0
 fi
 
@@ -47,7 +47,7 @@ for i in $(cat "${SPDYConfig}"); do
     port: ${port} \n"
   else
 
-    runCommandIfPortClosed "${port}" "${binDir}/start-spdy-nghttpx.sh \"${frontConfigList}\";  echo \"Restart HTTP2/SPDY with ${username}, ${port}\""
+    runCommandIfPortClosed "${port}" "${binDir}/start-spdy-nghttpx.sh \"${frontConfigList}\";  echo \"Restart HTTP2 with ${username}, ${port}\""
 
   fi
 

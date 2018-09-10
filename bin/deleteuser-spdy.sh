@@ -22,4 +22,4 @@ removeLineInFile  ${SPDYSquidPassWdFile} "${SPDYName}:"
 
 ${binDir}/restart-spdy-nghttpx-squid.sh > /dev/null 2>&1
 
-echoS "HTTP2/SPDY deleted for ${SPDYName} from ${SPDYConfig} and ${SPDYSquidPassWdFile}"
+echoS "HTTP2 deleted for ${SPDYName} from ${SPDYConfig} and ${SPDYSquidPassWdFile}"

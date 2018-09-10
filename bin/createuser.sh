@@ -4,7 +4,7 @@ source /opt/.global-utils.sh
 
 if [ "x$1" = "x-h" -o "x$1" = "x--help" ]
 then
-  echo "$0 Username Pass ShadowsocksRPort SPDYPort"
+  echo "$0 Username Pass ShadowsocksRPort HTTP2Port"
   exit 0
 fi
 
@@ -27,7 +27,7 @@ if [[ ! -z ${isToInstallOcservCiscoAnyConnect} ]];then
     ${binDir}/createuser-ocserv.sh "${user}" "${pass}"
 fi
 
-echoS "All done. HTTP2/SPDY, Shadowsocks-R account has been created for user $user"
+echoS "All done. HTTP2, Shadowsocks-R account has been created for user $user"
 
 echoS "================================================================================"
 echo ""

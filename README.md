@@ -47,7 +47,7 @@ wget --no-cache -q https://raw.githubusercontent.com/free-server/safe-server/mas
 bash install-shadowsocks-spdy.sh
 ```
 
-Note that, the script could be redeployed/reinstalled on your Ubuntu without worries on losing any old Shadowsocks-R and HTTP2/SPDY account or password.
+Note that, the script could be redeployed/reinstalled on your Ubuntu without worries on losing any old Shadowsocks-R and HTTP/2 account or password.
 It backs them up if found any before execute re-installation.
 
 ### Do not take 8443 and 80
@@ -65,8 +65,8 @@ Google: [TCP BBR](https://doub.io/wlzy-16/)
 ```bash
 # Assume you didn't change $freeServerRoot
 
-# Shadowsocks-r+HTTP2/SPDY VPN: 
-sudo /opt/free-server/git-repo/free-server/bin/createuser.sh User Pass ShadowsocksRPort SPDYPort
+# Shadowsocks-r+HTTP2 VPN:
+sudo /opt/free-server/git-repo/free-server/bin/createuser.sh User Pass ShadowsocksRPort HTTP2Port
 
 # e.g. 
 sudo /opt/free-server/git-repo/free-server/bin/createuser.sh test1 test123 10000 10401
@@ -87,7 +87,7 @@ export shadowsocksRProtocol="auth_sha1_v4"
 export shadowsocksRObfuscateParam="s3.amazonaws.com"
 ```
 
-* HTTP2 / SPDY
+* HTTP2
 
 After you created a user, you should know.
 
@@ -96,8 +96,8 @@ After you created a user, you should know.
 ```bash
 # Assume you didn't change $freeServerRoot
 
-# Shadowsocks-r+HTTP2/SPDY VPN: 
-sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh User Pass ShadowsocksRPort SPDYPort
+# Shadowsocks-r+HTTP2 VPN:
+sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh User Pass ShadowsocksRPort HTTP2Port
 
 # e.g. 
 sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh test1 test123 10000 10401

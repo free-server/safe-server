@@ -27,7 +27,7 @@ catchError=$(/bin/bash ${binDir}/cron-spdy-nghttpx-squid-forever-process-running
 catchError=$(service cron restart 2>&1 >> ${loggerStdoutFile})
 
 #echoS "Restart Shadowsocks/SPDY/IPSec"
-echoS "Restart ShadowsocksR/SPDY/Ocserv"
+echoS "Restart ShadowsocksR/HTTP2/Ocserv"
 
 #${freeServerRoot}/restart-ipsec
 if [[ ! -z ${isToInstallOcservCiscoAnyConnect} ]];then

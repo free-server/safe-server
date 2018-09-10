@@ -10,7 +10,7 @@ then
 fi
 
 if [[ ! -f ${SPDYConfig} ]]; then
-  echoS "The SPDY config file ${SPDYConfig} is not found . Exit" "stderr"
+  echoS "The HTTP2 config file ${SPDYConfig} is not found . Exit" "stderr"
   exit 0
 fi
 
