@@ -5,7 +5,7 @@ source /opt/.global-utils.sh
 main() {
 
 #  getSpdySslCaPemFile
-  installSpdyLay
+  uninstallSpdyLay
 
   cleanupMemory
 
@@ -26,30 +26,33 @@ main() {
 
 }
 
-installSpdyLay() {
+uninstallSpdyLay() {
 
-  echoS "Install SpdyLay"
+  echoS "Detect if old SpdyLay exists"
   #npm install -g spdyproxy > /dev/null 2>&1
   apt-get install -y autoconf automake \
   autotools-dev libtool pkg-config zlib1g-dev libcunit1-dev libssl-dev libxml2-dev libevent-dev \
    2>&1 >> ${loggerStdoutFile}
 
 #  rm -rf ${SPDYSpdyLayTarGzName}
-#  rm -rf ${SPDYSpdyLayFolderName}
 
-  echoS "[INFO] Skipped installing SpdyLay as it's not needed since Chrome supports latest HTTP/2"
-  return
+  if [[ ! -d "${spdyInstalledPath}" ]];then
+    echoS "[INFO] SpdyLay not found"
+    return
+  fi
+
+  echoS "[INFO] Uninstalling SpdyLay as it's not needed since Chrome supports latest HTTP/2"
 
 #  echoS "Downloading ${SPDYSpdyLayDownloadLink}"
 
   cd ${gitRepoPath}
 
-  #wget ${SPDYSpdyLayDownloadLink} >> /dev/null 2>&1
-  #echoS "Installing, may need 5 minutes..."
-  #warnNoEnterReturnKey
+  wget ${SPDYSpdyLayDownloadLink} >> /dev/null 2>&1
+  echoS "Uninstalling, may need 5 minutes..."
+  warnNoEnterReturnKey
 
-  #catchError=$(tar zxf ${SPDYSpdyLayTarGzName} 2>&1 >> ${loggerStdoutFile})
-  #exitOnError "${catchError}"
+  catchError=$(tar zxf ${SPDYSpdyLayTarGzName} 2>&1 >> ${loggerStdoutFile})
+#  exitOnError "${catchError}"
 
 #  cd ${SPDYSpdyLayFolderName}/
 #  autoreconf -i >> /dev/null \
@@ -60,11 +63,20 @@ installSpdyLay() {
 #    && make install \
 #     >> /dev/null
 
+  cd ${SPDYSpdyLayFolderName}/
+  autoreconf -i >> /dev/null \
+    && automake >> /dev/null \
+    && autoconf >> /dev/null \
+    && ./configure >> /dev/null \
+    && make >> /dev/null \
+    && make uninstall \
+     >> /dev/null
+
 #  ldconfig
 
   cd ..
-#  rm -rf ${SPDYSpdyLayTarGzName}
-#  rm -rf ${SPDYSpdyLayFolderName}
+  rm -rf ${SPDYSpdyLayTarGzName}
+  rm -rf ${SPDYSpdyLayFolderName}
 
 }
 

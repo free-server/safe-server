@@ -154,9 +154,13 @@ export SPDYNgHttp2Version=1.33.0
 export SPDYNgHttp2DownloadLink="https://github.com/nghttp2/nghttp2/releases/download/v${SPDYNgHttp2Version}/nghttp2-${SPDYNgHttp2Version}.tar.gz"
 export SPDYNgHttp2FolderName="nghttp2-${SPDYNgHttp2Version}"
 export SPDYNgHttp2TarGzName="${SPDYNgHttp2FolderName}.tar.gz"
-#export SPDYSpdyLayDownloadLink="https://github.com/tatsuhiro-t/spdylay/releases/download/v1.4.0/spdylay-1.4.0.tar.gz"
-#export SPDYSpdyLayFolderName="spdylay-1.4.0"
-#export SPDYSpdyLayTarGzName="${SPDYSpdyLayFolderName}.tar.gz"
+
+export SPDYSpdyLayDownloadLink="https://github.com/tatsuhiro-t/spdylay/releases/download/v1.4.0/spdylay-1.4.0.tar.gz"
+export SPDYSpdyLayFolderName="spdylay-1.4.0"
+export SPDYSpdyLayTarGzName="${SPDYSpdyLayFolderName}.tar.gz"
+
+export spdyInstalledPath=/usr/local/include/spdylay
+
 export SPDYSquidConfig="${configDir}/squid.conf"
 export SPDYSquidCacheDir="/var/spool/squid"
 export SPDYSquidPassWdFile="${configDir}/squid-auth-passwd"
