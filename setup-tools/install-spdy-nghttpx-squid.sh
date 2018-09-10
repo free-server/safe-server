@@ -34,8 +34,8 @@ installSpdyLay() {
   autotools-dev libtool pkg-config zlib1g-dev libcunit1-dev libssl-dev libxml2-dev libevent-dev \
    2>&1 >> ${loggerStdoutFile}
 
-  rm -rf ${SPDYSpdyLayTarGzName}
-  rm -rf ${SPDYSpdyLayFolderName}
+#  rm -rf ${SPDYSpdyLayTarGzName}
+#  rm -rf ${SPDYSpdyLayFolderName}
 
   echoS "[INFO] Skipped installing SpdyLay as it's not needed since Chrome supports latest HTTP/2"
   return
@@ -63,8 +63,8 @@ installSpdyLay() {
 #  ldconfig
 
   cd ..
-  rm -rf ${SPDYSpdyLayTarGzName}
-  rm -rf ${SPDYSpdyLayFolderName}
+#  rm -rf ${SPDYSpdyLayTarGzName}
+#  rm -rf ${SPDYSpdyLayFolderName}
 
 }
 
