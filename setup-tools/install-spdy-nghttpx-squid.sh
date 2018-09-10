@@ -37,27 +37,30 @@ installSpdyLay() {
   rm -rf ${SPDYSpdyLayTarGzName}
   rm -rf ${SPDYSpdyLayFolderName}
 
-  echoS "Downloading ${SPDYSpdyLayDownloadLink}"
+  echoS "[INFO] Skipped installing SpdyLay as it's not needed since Chrome supports latest HTTP/2"
+  return
+
+#  echoS "Downloading ${SPDYSpdyLayDownloadLink}"
 
   cd ${gitRepoPath}
 
-  wget ${SPDYSpdyLayDownloadLink} >> /dev/null 2>&1
-  echoS "Installing, may need 5 minutes..."
-  warnNoEnterReturnKey
+  #wget ${SPDYSpdyLayDownloadLink} >> /dev/null 2>&1
+  #echoS "Installing, may need 5 minutes..."
+  #warnNoEnterReturnKey
 
-  catchError=$(tar zxf ${SPDYSpdyLayTarGzName} 2>&1 >> ${loggerStdoutFile})
-  exitOnError "${catchError}"
+  #catchError=$(tar zxf ${SPDYSpdyLayTarGzName} 2>&1 >> ${loggerStdoutFile})
+  #exitOnError "${catchError}"
 
-  cd ${SPDYSpdyLayFolderName}/
-  autoreconf -i >> /dev/null \
-    && automake >> /dev/null \
-    && autoconf >> /dev/null \
-    && ./configure >> /dev/null \
-    && make >> /dev/null \
-    && make install \
-     >> /dev/null
+#  cd ${SPDYSpdyLayFolderName}/
+#  autoreconf -i >> /dev/null \
+#    && automake >> /dev/null \
+#    && autoconf >> /dev/null \
+#    && ./configure >> /dev/null \
+#    && make >> /dev/null \
+#    && make install \
+#     >> /dev/null
 
-  ldconfig
+#  ldconfig
 
   cd ..
   rm -rf ${SPDYSpdyLayTarGzName}
