@@ -776,6 +776,20 @@ setEmail() {
 export -f setEmail
 
 mailNotify() {
+
+  if [[ -z "$(which mail)" ]];then
+    echoS "Install mail first"
+    debconf-set-selections <<< "postfix postfix/mailname string ${freeServerName}"
+    debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
+    apt-get update -y >> /dev/null 2>&1
+    apt-get install -y mailutils >> /dev/null 2>&1
+  fi
+
+  if [[ -z "$(which mail)" ]];then
+      echoErr "[ERROR] mail command not found."
+      return 1
+  fi
+
   ${binDir}/mail.sh "$@"
 }
 export -f mailNotify
