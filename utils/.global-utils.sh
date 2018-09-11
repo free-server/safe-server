@@ -776,6 +776,9 @@ setEmail() {
 export -f setEmail
 
 installMail(){
+
+  postfixConf=/etc/postfix/main.cf
+
   echoS "Install mail first"
   #    apt-get purge postfix -y  >> /dev/null 2>&1
   #    apt-get install postfix -y  >> /dev/null 2>&1
@@ -783,9 +786,29 @@ installMail(){
   debconf-set-selections <<< "postfix postfix/mailname string ${freeServerName}"
   debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
   apt-get install -y mailutils >> /dev/null 2>&1
-  systemctl postfix restart
-  replaceStringInFile /etc/postfix/main.cf "myhostname =.*" "myhostname = ${freeServerName} "
-  systemctl postfix restart
+#  systemctl postfix restart
+#  replaceStringInFile ${postfixConf} "myhostname =.*" "myhostname = ${freeServerName} "
+#  replaceStringInFile ${postfixConf}  "smtpd_tls_cert_file =.*" "smtpd_tls_cert_file = ${letsEncryptCertPath} "
+#  replaceStringInFile ${postfixConf}  "smtpd_tls_key_file =.*" "smtpd_tls_key_file = ${letsEncryptKeyPath} "
+#  echo "smtpd_tls_auth_only = yes" >> ${postfixConf}
+#  echo "smtpd_tls_loglevel = 1" >> ${postfixConf}
+#  echo "smtpd_tls_received_header = yes" >> ${postfixConf}
+#  echo "smtpd_tls_session_cache_timeout = 3600s" >> ${postfixConf}
+#  echo "tls_random_source = dev:/dev/urandom" >> ${postfixConf}
+
+  postconf -e \
+  "myhostname = ${freeServerName}" \
+  "mydestination = \$myhostname" \
+  "relayhost = localhost" \
+  "smtpd_tls_cert_file = ${letsEncryptCertPath}" \
+  "smtpd_tls_key_file = ${letsEncryptKeyPath}" \
+  "smtpd_tls_auth_only = yes" \
+  "smtpd_tls_loglevel = 1" \
+  "smtpd_tls_received_header = yes" \
+  "smtpd_tls_session_cache_timeout = 3600s" \
+  "tls_random_source = dev:/dev/urandom"
+
+  systemctl restart postfix
   postfix stop
   postfix start
 
