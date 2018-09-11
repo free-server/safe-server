@@ -66,10 +66,10 @@ Google: [TCP BBR](https://doub.io/wlzy-16/)
 # Assume you didn't change $freeServerRoot
 
 # Shadowsocks-r+HTTP2 VPN:
-sudo /opt/free-server/git-repo/free-server/bin/createuser.sh User Pass ShadowsocksRPort HTTP2Port
+sudo /opt/free-server/git-repo/free-server/bin/createuser.sh User Pass ShadowsocksRPort HTTP2Port EmailAddress
 
 # e.g. 
-sudo /opt/free-server/git-repo/free-server/bin/createuser.sh test1 test123 10000 10401
+sudo /opt/free-server/git-repo/free-server/bin/createuser.sh test1 test123 10000 10401 SOME_SOME_USER@qq.com
 
 ```
 
@@ -97,10 +97,10 @@ After you created a user, you should know.
 # Assume you didn't change $freeServerRoot
 
 # Shadowsocks-r+HTTP2 VPN:
-sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh User Pass ShadowsocksRPort HTTP2Port
+sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh User Pass ShadowsocksRPort HTTP2Port SOME_SOME_USER@qq.com
 
 # e.g. 
-sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh test1 test123 10000 10401
+sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh test1 test123 10000 10401 SOME_SOME_USER@qq.com
 
 ```
 

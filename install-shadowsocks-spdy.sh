@@ -229,7 +229,7 @@ ${setupToolsDir}/init.sh || exitOnError "[ERROR] main step installation failed"
 
 echoS "All done. Create user example: \n\n\
 \
-Shadowsocks-R+HTTP/2: ${binDir}/createuser.sh User Pass ShadowsocksPort SPDYPort \n\n\
+Shadowsocks-R+HTTP/2: ${binDir}/createuser.sh User Pass ShadowsocksPort SPDYPort EmailAddress\n\n\
 \
 Shadowsocks-R Only: ${binDir}/createuser-shadowsocks-r.sh Port Pass \n\n\
 \
@@ -238,7 +238,7 @@ HTTP/2 Only: ${binDir}/createuser-spdy-nghttpx-squid.sh User Pass Port \n\n\
 "
 
 echoS "\x1b[46m Next step: \x1b[0m\n\n\
-1. Create a user: ${binDir}/createuser.sh USERNAME PASSWORD ShadowsocksRPort HTTP2Port \n\n\
+1. Create a user: ${binDir}/createuser.sh USERNAME PASSWORD ShadowsocksRPort HTTP2Port EmailAddress \n\n\
 2. Config Chrome or other client. Tutorial is here: ${freeServerProjectUrl}#how-to-setup-clients \n\n\
 "
 

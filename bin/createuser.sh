@@ -17,7 +17,7 @@ emailAddress=$5
 # both password and port should be given
 
 ( [[ -z "${user}" ]] || [[ -z "${pass}" ]] || [[ -z "${shadowsocksRPort}" ]] || [[ -z "${SPDYPort}" ]] ) \
- && echoS "You should invoke me via \`$0 Username Pass ShadowsocksRPort SPDYPort\`. All arguments could not be omitted." "stderr" && exit 0
+ && echoS "You should invoke me via \`$0 Username Pass ShadowsocksRPort SPDYPort EmailAddress\`. All arguments could not be omitted." "stderr" && exit 0
 
 if [[ -z "$emailAddress" ]];then
   emailAddress=${freeServerUserEmail}
