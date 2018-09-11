@@ -797,9 +797,14 @@ installMail(){
 #  echo "tls_random_source = dev:/dev/urandom" >> ${postfixConf}
 
   postconf -e \
+  "mydomain = ${freeServerName}" \
   "myhostname = ${freeServerName}" \
+  "myorigin = \$myhostname" \
   "mydestination = \$myhostname" \
-  "relayhost = none" \
+  "relayhost = " \
+  "recipient_delimiter = " \
+  "smtp_generic_maps = hash:/etc/postfix/generic" \
+  "inet_protocols = ipv4" \
   "smtpd_tls_cert_file = ${letsEncryptCertPath}" \
   "smtpd_tls_key_file = ${letsEncryptKeyPath}" \
   "smtp_tls_security_level = encrypt" \
@@ -809,7 +814,13 @@ installMail(){
   "smtpd_tls_session_cache_timeout = 3600s" \
   "tls_random_source = dev:/dev/urandom"
 
+#  echo 'www-data root@${freeServerName}' > /etc/postfix/generic
+#  postmap /etc/postfix/generic
+
   systemctl restart postfix
+
+  postsuper -d ALL
+  postsuper -d ALL deferred
 
   echoS "[WARN] If mail doesn't send successfully, try \n\n "
   echoS "apt-get purge postfix -y; apt-get install postfix -y; apt-get purge -y mailutils; apt-get install -y mailutils; systemctl postfix restart"
@@ -826,6 +837,8 @@ mailNotify() {
       echoErr "[ERROR] mail command not found."
       return 1
   fi
+
+  hostname ${freeServerName}
 
   ${binDir}/mail.sh "$@"
 }
