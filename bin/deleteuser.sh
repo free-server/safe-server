@@ -31,4 +31,4 @@ if [[ ! -z ${isToInstallOcservCiscoAnyConnect} ]];then
     ${binDir}/deleteuser-ocserv.sh "${user}"
 fi
 
-mailNotify "Safe server account deleted for ${user}" "User ${user} is deleted" "${emailAddress}"
+mailNotify "Safe server user is deleted for ${user}" "User ${user} is deleted for ${emailAddress}" "${emailAddress}"
