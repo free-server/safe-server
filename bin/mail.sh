@@ -51,7 +51,7 @@ fi
 
 cmd="echo -ne \"${bodyToSend}\" | mail -s \"\$(echo -e \"${titleToSend}\nFrom: ${fromName} <${fromAddr}>\nReply-to: ${replyTo}\nContent-Type: text/html\n\")\" ${sendTo} ${freeServerUserEmail}"
 
-echoS "[INFO] Start to execute:"
-echo "${cmd}"
+#echoS "[INFO] Start to execute:"
+#echo "${cmd}"
 
 eval "${cmd}"
