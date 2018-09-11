@@ -24,6 +24,7 @@ if [[ -z "$emailAddress" ]];then
 fi
 
 ${binDir}/createuser-shadowsocks-r.sh "${shadowsocksRPort}" "${pass}"
+SSREmailContent=$(${binDir}/get-shadowsocks-r-qr-scheme-html.sh "${shadowsocksRPort}" "${pass}")
 #${freeServerRoot}/createuser-spdy "${user}" "${pass}" "${SPDYPort}"
 ${binDir}/createuser-spdy-nghttpx-squid.sh "${user}" "${pass}" "${SPDYPort}"
 #${freeServerRoot}/createuser-ipsec "${user}" "${pass}"
@@ -45,4 +46,4 @@ echo "${httpsFreeServerUrl}/#http2"
 echo ""
 echoS "================================================================================"
 
-mailNotify "Safe server user is created for ${user}" "Host: ${freeServerName} \n<br /> HTTP2Port: ${SPDYPort} \n<br /> Username: ${user} \n<br /> Password: ${pass} \n<br /> Setup Tutorial: ${httpsFreeServerUrl}/#http2 \n<br />\n<br /> SSRPort(Optional): ${shadowsocksRPort}" "${emailAddress}"
+mailNotify "Safe server user is created for ${user}" "Host: ${freeServerName} \n<br /> HTTP2Port: ${SPDYPort} \n<br /> Username: ${user} \n<br /> Password: ${pass} \n<br /> Setup Tutorial: ${httpsFreeServerUrl}/#http2 \n<br />\n<br /><hr />\n<br /> ${SSREmailContent}" "${emailAddress}"
