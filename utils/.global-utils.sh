@@ -775,10 +775,29 @@ setEmail() {
 }
 export -f setEmail
 
+installMail(){
+  echoS "Install mail first"
+  #    apt-get purge postfix -y  >> /dev/null 2>&1
+  #    apt-get install postfix -y  >> /dev/null 2>&1
+  apt-get update -y >> /dev/null 2>&1
+  debconf-set-selections <<< "postfix postfix/mailname string ${freeServerName}"
+  debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
+  apt-get install -y mailutils >> /dev/null 2>&1
+  systemctl postfix restart
+
+  echoS "[WARN] If mail doesn't send successfully, try \n\n "
+  echoS "apt-get purge postfix -y; apt-get install postfix -y; apt-get purge -y mailutils; apt-get install -y mailutils; systemctl postfix restart"
+
+}
+
 mailNotify() {
 
   if [[ -z "$(which mail)" ]];then
-      echoErr "[ERROR] Email not sent. Linux 'mail' command not found. You must configure it by yourself"
+    installMail
+  fi
+
+  if [[ -z "$(which mail)" ]];then
+      echoErr "[ERROR] mail command not found."
       return 1
   fi
 
