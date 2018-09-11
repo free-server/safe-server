@@ -786,15 +786,8 @@ installMail(){
   debconf-set-selections <<< "postfix postfix/mailname string ${freeServerName}"
   debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
   apt-get install -y mailutils >> /dev/null 2>&1
-#  systemctl postfix restart
-#  replaceStringInFile ${postfixConf} "myhostname =.*" "myhostname = ${freeServerName} "
-#  replaceStringInFile ${postfixConf}  "smtpd_tls_cert_file =.*" "smtpd_tls_cert_file = ${letsEncryptCertPath} "
-#  replaceStringInFile ${postfixConf}  "smtpd_tls_key_file =.*" "smtpd_tls_key_file = ${letsEncryptKeyPath} "
-#  echo "smtpd_tls_auth_only = yes" >> ${postfixConf}
-#  echo "smtpd_tls_loglevel = 1" >> ${postfixConf}
-#  echo "smtpd_tls_received_header = yes" >> ${postfixConf}
-#  echo "smtpd_tls_session_cache_timeout = 3600s" >> ${postfixConf}
-#  echo "tls_random_source = dev:/dev/urandom" >> ${postfixConf}
+
+  maps=/etc/postfix/generic
 
   postconf -e \
   "mydomain = ${freeServerName}" \
@@ -803,7 +796,7 @@ installMail(){
   "mydestination = \$myhostname" \
   "relayhost = " \
   "recipient_delimiter = " \
-  "smtp_generic_maps = hash:/etc/postfix/generic" \
+  "smtp_generic_maps = hash:${maps}" \
   "inet_protocols = ipv4" \
   "smtpd_tls_cert_file = ${letsEncryptCertPath}" \
   "smtpd_tls_key_file = ${letsEncryptKeyPath}" \
@@ -814,7 +807,7 @@ installMail(){
   "smtpd_tls_session_cache_timeout = 3600s" \
   "tls_random_source = dev:/dev/urandom"
 
-  echo 'www-data root@${freeServerName}' > /etc/postfix/generic
+  echo "www-data root@${freeServerName}" > ${maps}
   postmap /etc/postfix/generic
 
   systemctl restart postfix
@@ -823,7 +816,7 @@ installMail(){
   postsuper -d ALL deferred
 
   echoS "[WARN] If mail doesn't send successfully, try \n\n "
-  echoS "apt-get purge postfix -y; apt-get install postfix -y; apt-get purge -y mailutils; apt-get install -y mailutils; systemctl postfix restart"
+  echoS "apt-get purge postfix -y; apt-get install postfix -y; apt-get purge -y mailutils; apt-get install -y mailutils; systemctl restart postfix"
 
 }
 
