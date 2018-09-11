@@ -814,8 +814,8 @@ installMail(){
   "smtpd_tls_session_cache_timeout = 3600s" \
   "tls_random_source = dev:/dev/urandom"
 
-#  echo 'www-data root@${freeServerName}' > /etc/postfix/generic
-#  postmap /etc/postfix/generic
+  echo 'www-data root@${freeServerName}' > /etc/postfix/generic
+  postmap /etc/postfix/generic
 
   systemctl restart postfix
 
