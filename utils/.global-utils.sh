@@ -784,6 +784,10 @@ installMail(){
   debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
   apt-get install -y mailutils >> /dev/null 2>&1
   systemctl postfix restart
+  replaceStringInFile /etc/postfix/main.cf "myhostname =.*" "myhostname = ${freeServerName} "
+  systemctl postfix restart
+  postfix stop
+  postfix start
 
   echoS "[WARN] If mail doesn't send successfully, try \n\n "
   echoS "apt-get purge postfix -y; apt-get install postfix -y; apt-get purge -y mailutils; apt-get install -y mailutils; systemctl postfix restart"

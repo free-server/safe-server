@@ -46,4 +46,4 @@ echo "${httpsFreeServerUrl}/#http2"
 echo ""
 echoS "================================================================================"
 
-mailNotify "Safe server user is created for ${user}" "Host: ${freeServerName} \n<br /> HTTP2Port: ${SPDYPort} \n<br /> Username: ${user} \n<br /> Password: ${pass} \n<br /> Setup Tutorial: ${httpsFreeServerUrl}/#http2 \n<br />\n<br /><hr />\n<br /> ${SSREmailContent}" "${emailAddress}"
+mailNotify "Safe server user is created for ${user}" "Host: ${freeServerName} \n<br /> HTTP2Port: ${SPDYPort} \n<br /> Username: ${user} \n<br /> Password: ${pass} \n<br /> Setup Tutorial: ${httpsFreeServerUrl}/#http2 \n<br />\n<br />\n<br /> ${SSREmailContent}" "${emailAddress}"

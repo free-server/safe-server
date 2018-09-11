@@ -59,7 +59,7 @@ remarkBase64="$(echo free-server:${freeServerName} | base64)"
 ssrQrSchemeRaw=$(echo "${freeServerName}:${port}:${protocol}:${encrypt}:${obfuscate}:${passwordBase64}/?obfsparam=${obfuscateParamBase64}&protoparam=${protocolParamBase64}&remarks=${remarkBase64}&udpport=0&uot=0" | base64 -w 0)
 ssrQrScheme=ssr://${ssrQrSchemeRaw}
 
-echo "<br />================================================================================\
+echo "<hr /><br />\
 <br />\nSSR info: \n<br />\
 Host: ${freeServerName} \n<br />\
 Port: ${port} \n<br />\
@@ -68,6 +68,6 @@ Obfuscate: ${obfuscate} \n<br />\
 Protocol: ${protocol} \n<br />\
 Encrypt: ${encrypt} \n<br />\n<br />\
 <br />SSR Tutorial:\n<br />\n<br />\
-https://${freeServerName}/#${ssrQrSchemeRaw}\n<br />\n\n<br />\
-================================================================================"
+https://${freeServerName}/#${ssrQrSchemeRaw}\n<br />\n\n<br /><hr />\
+"
 
