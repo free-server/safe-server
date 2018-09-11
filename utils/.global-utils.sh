@@ -759,7 +759,7 @@ export -f setServerName
 # get current user email
 setEmail() {
 
-  email=$(getUserInput "Input \x1b[46m Your Email \x1b[0m (e.g. paul_lan@gmail.com): " non-empty 3)
+  email=$(getUserInput "Input \x1b[46m Your Email \x1b[0m (e.g. free-server@gmail.com): " non-empty 3)
 
   if [[ -z ${email} ]]; then
 
@@ -774,6 +774,11 @@ setEmail() {
 
 }
 export -f setEmail
+
+mailNotify() {
+  ${binDir}/mail.sh "$@"
+}
+export -f mailNotify
 
 ensure80443PortIsAvailable(){
 
