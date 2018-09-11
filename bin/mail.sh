@@ -49,7 +49,7 @@ if [[ -z "$replyTo" ]];then
 	replyTo=${freeServerUserEmail}
 fi
 
-cmd="echo \"${bodyToSend}\" | mail -s \"\$(echo -e \"${titleToSend}\nFrom: ${fromName} <${fromAddr}>\nReply-to: ${replyTo}\nContent-Type: text/html\n\")\" ${sendTo} ${freeServerUserEmail}"
+cmd="echo -ne \"${bodyToSend}\" | mail -s \"\$(echo -e \"${titleToSend}\nFrom: ${fromName} <${fromAddr}>\nReply-to: ${replyTo}\nContent-Type: text/html\n\")\" ${sendTo} ${freeServerUserEmail}"
 
 echoS "[INFO] Start to execute:"
 echo "${cmd}"
