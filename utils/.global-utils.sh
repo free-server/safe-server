@@ -799,9 +799,10 @@ installMail(){
   postconf -e \
   "myhostname = ${freeServerName}" \
   "mydestination = \$myhostname" \
-  "relayhost = localhost" \
+  "relayhost = none" \
   "smtpd_tls_cert_file = ${letsEncryptCertPath}" \
   "smtpd_tls_key_file = ${letsEncryptKeyPath}" \
+  "smtp_tls_security_level = encrypt" \
   "smtpd_tls_auth_only = yes" \
   "smtpd_tls_loglevel = 1" \
   "smtpd_tls_received_header = yes" \
@@ -809,8 +810,6 @@ installMail(){
   "tls_random_source = dev:/dev/urandom"
 
   systemctl restart postfix
-  postfix stop
-  postfix start
 
   echoS "[WARN] If mail doesn't send successfully, try \n\n "
   echoS "apt-get purge postfix -y; apt-get install postfix -y; apt-get purge -y mailutils; apt-get install -y mailutils; systemctl postfix restart"
