@@ -46,4 +46,3 @@ echo ""
 echoS "================================================================================"
 
 mailNotify "Safe server account created for ${user}" "Host: ${freeServerName} \n HTTP2Port: ${SPDYPort} \n Username: ${user} \n Password: ${pass} \n Setup Tutorial: ${httpsFreeServerUrl}/#http2 \n\n SSRPort(Optional): ${shadowsocksRPort}" "${emailAddress}"
-echoS "Notification email sent to: ${emailAddress}"

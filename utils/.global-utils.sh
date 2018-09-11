@@ -778,7 +778,7 @@ export -f setEmail
 mailNotify() {
 
   if [[ -z "$(which mail)" ]];then
-      echoErr "[ERROR] mail command not found. You must configure it by yourself"
+      echoErr "[ERROR] Email not sent. Linux 'mail' command not found. You must configure it by yourself"
       return 1
   fi
 
