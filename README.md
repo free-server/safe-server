@@ -50,12 +50,13 @@ bash install-shadowsocks-spdy.sh
 Note that, the script could be redeployed/reinstalled on your Ubuntu without worries on losing any old Shadowsocks-R and HTTP/2 account or password.
 It backs them up if found any before execute re-installation.
 
-### Do not take 8443 and 80
+### Do not take 443 and 80
 ```bash
 sudo su
 echo "export miscWebsitePortHttps=8443" >> ~/.bashrc
 echo "export miscWebsitePortHttp=8080" >> ~/.bashrc
 ```
+This is use port 8443 and 8080 instead 443 and 80
 
 ## Alternative TCP Optimized Installation (Chinese)
 Google: [TCP BBR](https://doub.io/wlzy-16/)
@@ -68,7 +69,7 @@ Google: [TCP BBR](https://doub.io/wlzy-16/)
 # Shadowsocks-r+HTTP2 VPN:
 sudo /opt/free-server/git-repo/free-server/bin/createuser.sh User Pass ShadowsocksRPort HTTP2Port EmailAddress
 
-# e.g. 
+# e.g.
 sudo /opt/free-server/git-repo/free-server/bin/createuser.sh test1 test123 10000 10401 SOME_SOME_USER@qq.com
 
 ```
@@ -99,7 +100,7 @@ After you created a user, you should know.
 # Shadowsocks-r+HTTP2 VPN:
 sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh User Pass ShadowsocksRPort HTTP2Port SOME_SOME_USER@qq.com
 
-# e.g. 
+# e.g.
 sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh test1 test123 10000 10401 SOME_SOME_USER@qq.com
 
 ```

@@ -33,7 +33,7 @@
                 }</script>
 
                 <ul>
-                    <li>开始：由于天朝禁止了多数的 番茄工具，所以你只能想办法注册一个新的美国 Apple ID。你需要拥有一台可以 全局系统翻qiang （比如使用 <a href="https://github.com/getlantern/forum">Google Lantern</a> 的全局代理模式，或者使用守望番茄实现 SSR 电脑系统全局代理 —— 很麻烦的） 的电脑，然后再参考这里：&nbsp;<a href="https://sspai.com/post/25837">https://sspai.com/post/25837</a> 。 或者，你最好找高手帮忙，要不估计无法申请成功 （因为中国不少时候会阻止美区 Apple Id申请）
+                    <li>开始：由于天朝禁止了多数的 番茄工具，所以你只能想办法注册一个新的美国 Apple ID。你需要拥有一台可以 全局系统翻qiang （比如使用 <a href="https://github.com/getlantern/forum">Google Lantern</a> 的全局代理模式，或者使用 Free-server 实现 SSR 电脑系统全局代理 —— 很麻烦的） 的电脑，然后再参考这里：&nbsp;<a href="https://sspai.com/post/25837">https://sspai.com/post/25837</a> 。 或者，你最好找高手帮忙，要不估计无法申请成功 （因为中国不少时候会阻止美区 Apple Id申请）
                     </li>
                     <li>使用新注册的美国 Apple ID 登录你 iPhone/iPad 的 Apple Store（先退出原来账号，原来账号安装的应用不受影响，其他的手机联系人什么的，都没有影响）</li>
                     <li>并且自己购买美国Apple Store礼品卡给自己的 Apple Store美国账号 充值。小方买过这个10美元的：
@@ -170,7 +170,7 @@
         }
 
         function main() {
-            var urlPrefix = location.protocol + '//' + location.hostname + '/tutorial/ios-potatso/';
+            var urlPrefix = '__SERVER_URL__/tutorial/ios-potatso/';
 
             makeCode('gfw.potasto2.decode.txt', 'qrcode_potatso_config', 'qrcode_link', urlPrefix);
         }

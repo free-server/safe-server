@@ -207,6 +207,8 @@ warnNoEnterReturnKey
 #${setupToolsDir}/install-spdy.sh
 ${setupToolsDir}/install-spdy-nghttpx-squid.sh || exitOnError "[ERROR] main step installation failed"
 
+${setupToolsDir}/update-tutorials.sh || exitOnError "[ERROR] main step installation failed"
+
 #echoS "Installing IPSec/IKEv2 VPN (for IOS)"
 #${setupToolsDir}/install-ipsec-ikev2.sh || exit 1
 
