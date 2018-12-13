@@ -11,7 +11,10 @@ No Info for you for safety
 * RAM 1Gb+; SSD Drive is preferred.
 * [IMPORTANT] Firewall inbound: TCP 22, 25, 80, 443 and all ports you want to use in SSR / HTTP2. Say 10000-30000
 * Firewall outbound: all ports
-* A Domain pointing to the Ubuntu server IP (A record - IPV4) and its Domain TXT Record set to `v=spf1 mx -all` ([SPF](https://hk.godaddy.com/en/help/add-an-spf-record-19218))
+* A Domain 
+  - Domain A record is pointing to the Ubuntu server IP (IPV4)
+  - Domain MX Record set to correct smtp server, say `smtp.secureserver.net`
+  - Domain TXT Record set to `v=spf1 mx -all` ([SPF](https://hk.godaddy.com/en/help/add-an-spf-record-19218))
 
 ### Average usage
 
