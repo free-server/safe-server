@@ -47,4 +47,6 @@ echoS "Create a simple website for testing purpose."
 
 ${binDir}/restart-misc.sh  2>&1 >> ${loggerStdoutFile}
 
+restore80443Process
+
 exit 0
