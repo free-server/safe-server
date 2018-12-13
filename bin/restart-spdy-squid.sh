@@ -9,6 +9,8 @@ then
   exit 0
 fi
 
+exitOnFreeServerUpdating
+
 echoS "Restart HTTP2 Squid3"
 
 killall squid3 > /dev/null 2>&1

@@ -42,7 +42,7 @@ echo ""
 echo ""
 echo "Tutorial WebLink:"
 echo ""
-echo "${httpsFreeServerUrl}/#http2"
+echo "${httpsFreeServerUrlHttp2Tutorial}"
 echo ""
 echoS "================================================================================"
 

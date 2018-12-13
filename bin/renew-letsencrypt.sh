@@ -3,6 +3,8 @@
 source /opt/.global-utils.sh
 
 
+exitOnFreeServerUpdating
+
 if [[ -z $freeServerName ]]; then
     echoS "freeServerName is empty. Stop renewing Let's Encrypt Cert." "stderr"
     exit 1

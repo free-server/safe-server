@@ -9,8 +9,24 @@ if [[ $UID -ne 0 ]]; then
     exit 1
 fi
 
+getCurrentDate(){
+  date +"%m_%d_%Y"
+}
+export -f getCurrentDate
 
-export currentDate=$(date +"%m_%d_%Y")
+getCurrentDateTime(){
+  date +"%m_%d_%Y__%H_%M_%S"
+}
+export -f getCurrentDateTime
+
+getCurrentDateTimeHour(){
+  date +"%m_%d_%Y__%H"
+}
+export -f getCurrentDateTimeHour
+
+export currentDate=$(getCurrentDate)
+export currentDateTime=$(getCurrentDateTime)
+export currentDateTimeHour=$(getCurrentDateTimeHour)
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -77,6 +93,7 @@ if [[ "${miscWebsitePortHttps}" != "443" ]]; then
 fi
 
 export httpsFreeServerUrl="https://${freeServerName}${httpsPortSuffix}"
+export httpsFreeServerUrlHttp2Tutorial=${httpsFreeServerUrl}/#http2
 
 # let's encrypt
 export letsEncryptCertFolder=/etc/letsencrypt/live/$freeServerName
@@ -220,6 +237,9 @@ export loggerStderrFile=${loggerStdoutFolder}/stderr.log
 export loggerRuntimeInfoFile=${loggerStdoutFolder}/runtime_info.log
 export loggerRuntimeErrFile=${loggerStdoutFolder}/runtime_error.log
 
+export updatingFreeServerFilePath=/tmp/free-server-updating-${currentDateTimeHour}
+export isFreeServerUpdating=$([[ -f ${updatingFreeServerFilePath} ]] && echo 1)
+
 enforceInstallOnUbuntu(){
 	isUbuntu=`cat /etc/issue | grep "Ubuntu"`
 
@@ -314,6 +334,7 @@ exitOnError(){
     sleep 2
 
     echoS "[Solution] You could retry this script again. It may solve the problem. If it still fails, you could report issue to Paul on github."
+    cleanUpFreeServerUpdating
     exit 1
   fi
 }
@@ -774,6 +795,28 @@ setEmail() {
 
 }
 export -f setEmail
+
+setupFreeServerUpdating(){
+  exitOnFreeServerUpdating
+
+  echo "${currentDateTime}" >> ${updatingFreeServerFilePath}
+  export isFreeServerUpdating=1
+}
+export -f setupFreeServerUpdating
+
+cleanUpFreeServerUpdating(){
+  rm ${updatingFreeServerFilePath}
+  export isFreeServerUpdating=""
+}
+export -f cleanUpFreeServerUpdating
+
+exitOnFreeServerUpdating(){
+  if [[ ! -z ${isFreeServerUpdating} ]];then
+    echoErr "Error: Free Server is already updating. If you want to enforce update, try remove file ${updatingFreeServerFilePath}"
+    exit 1
+  fi
+}
+export -f exitOnFreeServerUpdating
 
 installMail(){
 

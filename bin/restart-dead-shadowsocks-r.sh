@@ -8,8 +8,9 @@ then
   exit 0
 fi
 
-cd ${shadowsocksRFolder}
+exitOnFreeServerUpdating
 
+cd ${shadowsocksRFolder}
 
 isProcessRunning=$(ps aux | awk '$0~v' v="-c\\ ${shadowsocksRConfigJson}")
 

@@ -9,6 +9,8 @@ then
   exit 0
 fi
 
+exitOnFreeServerUpdating
+
 if [[ ! -s ${letsEncryptKeyPath} ]]; then
   echoS "The SSL Key file ${letsEncryptKeyPath} is not existed. Exit" "stderr"
   exit 1

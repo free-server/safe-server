@@ -56,7 +56,8 @@ sudo su
 echo "export miscWebsitePortHttps=8443" >> ~/.bashrc
 echo "export miscWebsitePortHttp=8080" >> ~/.bashrc
 ```
-This is use port 8443 and 8080 instead 443 and 80
+ - This is to use port 8443 and 8080 instead 443 and 80;
+- Make sure you enable those ports you assigned in your Firewall.
 
 ## Alternative TCP Optimized Installation (Chinese)
 Google: [TCP BBR](https://doub.io/wlzy-16/)
@@ -111,6 +112,7 @@ sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh test1 test123 10000
 
 ## Change Logs
 
+* [INFO] - 13/12/2018 - [feature] - Add auto update free-server itself monthly
 * [INFO] - Remove SPDYLay, only keeping HTTP/2 as Chrome supports HTTP/2 well
 
 ## License

@@ -9,6 +9,8 @@ then
   exit 0
 fi
 
+exitOnFreeServerUpdating
+
 if [[ ! -f ${SPDYConfig} ]]; then
   echoS "The HTTP2 config file ${SPDYConfig} is not found . Exit" "stderr"
   exit 0

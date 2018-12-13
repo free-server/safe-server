@@ -2,6 +2,8 @@
 
 source /opt/.global-utils.sh
 
+exitOnFreeServerUpdating
+
 #forever stop ${miscDir}/testing-web.js
 #forever start ${miscDir}/testing-web.js
 killProcessesByPattern SimpleHTTPServer

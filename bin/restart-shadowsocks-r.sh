@@ -8,6 +8,8 @@ then
   exit 0
 fi
 
+exitOnFreeServerUpdating
+
 cd ${shadowsocksRFolder}
 
 portPasswordJson="{"

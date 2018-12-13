@@ -23,6 +23,9 @@ catchError=$(/bin/bash ${binDir}/cron-spdy-nghttpx-squid-forever-process-running
 
 /bin/bash ${binDir}/cron-misc-forever-process-running-generate-cron.d.sh
 
+# auto-update github free-server itself
+/bin/bash ${binDir}/cron-update-free-server-from-github.sh
+
 # restart cron service
 catchError=$(service cron restart 2>&1 >> ${loggerStdoutFile})
 
@@ -45,5 +48,3 @@ echoS "Create a simple website for testing purpose."
 ${binDir}/restart-misc.sh  2>&1 >> ${loggerStdoutFile}
 
 exit 0
-
-#EOF

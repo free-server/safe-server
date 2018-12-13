@@ -12,6 +12,8 @@ then
   exit 0
 fi
 
+exitOnFreeServerUpdating
+
 port=$1
 password=$2
 encrypt=$3

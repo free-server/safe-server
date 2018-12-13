@@ -4,6 +4,8 @@ source /opt/.global-utils.sh
 
 frontConfigList=$1
 
+exitOnFreeServerUpdating
+
 main() {
   showHelp
   commonCheck

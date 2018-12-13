@@ -23,6 +23,7 @@ wget --no-cache ${bashUrl}/utils/.global-utils.sh
 source .global-utils.sh
 
 enforceInstallOnUbuntu
+setupFreeServerUpdating
 
 # stop accepting client locale setting for Ubuntu
 replaceStringInFile "/etc/ssh/sshd_config" AcceptEnv "\#AcceptEnv"
@@ -93,6 +94,7 @@ if [[ -d ${freeServerRoot} ]]; then
     if [[ -d ${configDirBackup} ]]; then
         echoS "Old backed up config files found in ${configDirBackup} ${configDirBackupDate}. \
         This is not correct. You should move it to other place or just delete it before proceed. Exit"
+        cleanUpFreeServerUpdating
         exit 0
     fi
 
@@ -214,7 +216,7 @@ ${setupToolsDir}/update-tutorials.sh || exitOnError "[ERROR] main step installat
 
 if [[ ! -z ${isToInstallOcservCiscoAnyConnect} ]];then
     echoS "Installing Cisco AnyConnect (Open Connect Ocserv)"
-    ${setupToolsDir}/install-ocserv.sh || exit 1
+    ${setupToolsDir}/install-ocserv.sh || exitOnError "[ERROR] main step installation failed"
 fi
 
 #echoS "Installing and Initiating Free Server Cluster for multiple IPs/Domains/Servers with same Login Credentials support"
@@ -226,6 +228,8 @@ fi
 
 
 echoS "Restart and Init Everything in need"
+
+cleanUpFreeServerUpdating
 
 ${setupToolsDir}/init.sh || exitOnError "[ERROR] main step installation failed"
 
@@ -248,6 +252,9 @@ echoS "\x1b[46m Next step: \x1b[0m\n\n\
 # remove self
 
 echoS "[MORE] BBR: I highly recommend you to install Google TCP BBR: https://doub.io/wlzy-16/ manually"
+
+source /opt/.global-utils.sh
+mailNotify "Updated - Safe server update finished at $(getCurrentDateTime)" "Create user: ${binDir}/createuser.sh USERNAME PASSWORD ShadowsocksRPort HTTP2Port EmailAddress \n\n\ Chrome Setup Tutorial: ${httpsFreeServerUrlHttp2Tutorial}"
 
 rm -f "$self"
 
