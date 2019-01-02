@@ -58,6 +58,7 @@ startNgHttpX() {
   ${frontConfigList} \
   --daemon \
   --http2-proxy \
+  --tls-no-postpone-early-data \
   --frontend-http2-max-concurrent-streams=${SPDYNgHttpXConcurrentStreamAmount} \
   --backend=\"${SPDYForwardBackendSquidHost},${SPDYForwardBackendSquidPort}\" \
   \"${letsEncryptKeyPath}\" \"${letsEncryptCertPath}\""

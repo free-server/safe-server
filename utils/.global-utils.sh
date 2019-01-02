@@ -167,7 +167,8 @@ fi
 export nghttpxUploadLimit="$((bandwidthPerUser*8*1024))"
 export nghttpxDownloadLimit="$((bandwidthPerUser*8*1024))"
 
-export SPDYNgHttp2Version=1.33.0
+# support 0-RTT
+export SPDYNgHttp2Version=1.35.1
 export SPDYNgHttp2DownloadLink="https://github.com/nghttp2/nghttp2/releases/download/v${SPDYNgHttp2Version}/nghttp2-${SPDYNgHttp2Version}.tar.gz"
 export SPDYNgHttp2FolderName="nghttp2-${SPDYNgHttp2Version}"
 export SPDYNgHttp2TarGzName="${SPDYNgHttp2FolderName}.tar.gz"
