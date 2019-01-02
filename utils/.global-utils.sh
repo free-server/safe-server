@@ -4,6 +4,10 @@
 export SHELL=/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
+if [[ -f /usr/local/openssl/bin/openssl ]];then
+  export PATH=/usr/local/openssl/bin:$PATH
+fi
+
 if [[ $UID -ne 0 ]]; then
     echo "$0 must be run as root"
     exit 1
