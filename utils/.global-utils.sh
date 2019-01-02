@@ -4,10 +4,6 @@
 export SHELL=/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-if [[ -f /usr/local/openssl/bin/openssl ]];then
-  export PATH=/usr/local/openssl/bin:$PATH
-fi
-
 if [[ $UID -ne 0 ]]; then
     echo "$0 must be run as root"
     exit 1
@@ -41,6 +37,8 @@ export bashrc=~/.bashrc
 
 if [[ -f  ${bashrc} ]];then
     source ${bashrc}
+else
+  touch ${bashrc}
 fi
 
 export freeServerCodeRepoName=safe-server
@@ -169,6 +167,7 @@ export openSSLVersion=OpenSSL_1_1_1a
 export openSSLTarGz=${openSSLVersion}.tar.gz
 export openSSLVersionUnzipped=openssl-OpenSSL_1_1_1a
 export openSSLDownloadLink=https://github.com/openssl/openssl/archive/${openSSLVersion}.tar.gz
+export openSSLPath=/usr/local/openssl
 
 export nghttpxWorkerCount=$((freeServerUserCountPerServer/3))
 if [ ${nghttpxWorkerCount} -lt 2 ];then

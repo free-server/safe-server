@@ -47,7 +47,7 @@ installSupportedOpenSSL(){
   cd ${openSSLVersionUnzipped}/
   echoS "Installing, may need 10 minutes...(25 minutes on HDD)"
 
-  ./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl shared zlib -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' >> /dev/null && make >> /dev/null && make install >> /dev/null
+  ./config --prefix=${openSSLPath} --openssldir=${openSSLPath} shared zlib -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' >> /dev/null && make >> /dev/null && make install >> /dev/null
 
   catchError=$(ldconfig 2>&1 >> ${loggerStdoutFile})
   exitOnError "${catchError}"
@@ -60,7 +60,7 @@ installSupportedOpenSSL(){
 #  echoS "Copy all OpenSSL configuration from  /usr/lib/ssl/"
 #
 #  oldSSLPath=/usr/lib/ssl
-#  newSSLPath=/usr/local/ssl
+#  newSSLPath=${openSSLPath}
 #
 #  if [[ -d ${oldSSLPath} && -d ${newSSLPath} ]]; then
 #
@@ -76,8 +76,7 @@ installSupportedOpenSSL(){
 #    echoS "Either ${oldSSLPath} or ${newSSLPath} doesn't exist"
 #  fi
 
-  source /opt/.global-utils.sh
-
+    [[ $(which openssl) == "*${openSSLPath}"  ]] || echo "export PATH=${openSSLPath}/bin:\$PATH" >> ${bashrc} && . ${bashrc} && openssl version
 }
 
 uninstallSpdyLay() {
