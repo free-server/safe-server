@@ -8,7 +8,9 @@ main() {
   uninstallSpdyLay
 
   cleanupMemory
+  installSupportedOpenSSL
 
+  cleanupMemory
   installNgHttpX
 
   uninstallSquid
