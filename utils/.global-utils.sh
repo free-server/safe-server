@@ -159,6 +159,12 @@ if [ ${shadowsocksRWorkerCount} -lt 2 ];then
 fi
 export shadowsocksRConfigJson="${configDir}/SSR.json"
 
+# OpenSSL
+
+export openSSLVersion=OpenSSL_1_1_1a
+export openSSLTarGz=${openSSLVersion}.tar.gz
+export openSSLVersionUnzipped=openssl-OpenSSL_1_1_1a
+export openSSLDownloadLink=https://github.com/openssl/openssl/archive/${openSSLVersion}.tar.gz
 
 export nghttpxWorkerCount=$((freeServerUserCountPerServer/3))
 if [ ${nghttpxWorkerCount} -lt 2 ];then

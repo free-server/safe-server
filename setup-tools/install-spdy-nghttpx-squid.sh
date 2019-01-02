@@ -26,6 +26,37 @@ main() {
 
 }
 
+installSupportedOpenSSL(){
+
+  echoS "Install OpenSSL ${openSSLTarGz}"
+
+  cd ${gitRepoPath}
+
+  rm -rf ${openSSLVersionUnzipped}
+  rm -rf ${openSSLTarGz}
+
+  echoS "Downloading ${openSSLDownloadLink}"
+
+  wget ${openSSLDownloadLink} >> /dev/null 2>&1
+
+  catchError=$(tar zxf ${openSSLTarGz} 2>&1 >> ${loggerStdoutFile})
+  exitOnError "${catchError}"
+
+  cd ${openSSLVersionUnzipped}/
+  echoS "Installing, may need 10 minutes...(25 minutes on HDD)"
+
+  catchError=$(./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' && make && make install 2>&1 >> ${loggerStdoutFile})
+  exitOnError "${catchError}"
+
+  catchError=$(ldconfig 2>&1 >> ${loggerStdoutFile})
+  exitOnError "${catchError}"
+
+  cd ..
+
+  rm -rf ${openSSLVersionUnzipped}
+  rm -rf ${openSSLTarGz}
+}
+
 uninstallSpdyLay() {
 
   echoS "Detect if old SpdyLay exists"
