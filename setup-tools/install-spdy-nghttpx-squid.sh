@@ -47,8 +47,7 @@ installSupportedOpenSSL(){
   cd ${openSSLVersionUnzipped}/
   echoS "Installing, may need 10 minutes...(25 minutes on HDD)"
 
-  catchError=$(./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' && make && make install 2>&1 >> ${loggerStdoutFile})
-  exitOnError "${catchError}"
+  ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' && make && make install
 
   catchError=$(ldconfig 2>&1 >> ${loggerStdoutFile})
   exitOnError "${catchError}"
