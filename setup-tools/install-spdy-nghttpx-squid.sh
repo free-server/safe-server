@@ -57,7 +57,7 @@ installSupportedOpenSSL(){
   rm -rf ${openSSLVersionUnzipped}
   rm -rf ${openSSLTarGz}
 
-  echoS "Copy all OpenSSL configuration from  /usr/lib/ssl/"
+#  echoS "Copy all OpenSSL configuration from  /usr/lib/ssl/"
 #
 #  oldSSLPath=/usr/lib/ssl
 #  newSSLPath=/usr/local/ssl
@@ -75,6 +75,8 @@ installSupportedOpenSSL(){
 #  else
 #    echoS "Either ${oldSSLPath} or ${newSSLPath} doesn't exist"
 #  fi
+
+  source /opt/.global-utils.sh
 
 }
 
