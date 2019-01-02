@@ -47,7 +47,7 @@ installSupportedOpenSSL(){
   cd ${openSSLVersionUnzipped}/
   echoS "Installing, may need 10 minutes...(25 minutes on HDD)"
 
-  ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' >> /dev/null && make >> /dev/null && make install >> /dev/null
+  ./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl shared zlib -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' >> /dev/null && make >> /dev/null && make install >> /dev/null
 
   catchError=$(ldconfig 2>&1 >> ${loggerStdoutFile})
   exitOnError "${catchError}"
@@ -58,23 +58,23 @@ installSupportedOpenSSL(){
   rm -rf ${openSSLTarGz}
 
   echoS "Copy all OpenSSL configuration from  /usr/lib/ssl/"
-
-  oldSSLPath=/usr/lib/ssl
-  newSSLPath=/usr/local/ssl
-
-  if [[ -d ${oldSSLPath} && -d ${newSSLPath} ]]; then
-
-    cp -r ${oldSSLPath}/* ${newSSLPath}/ 2>&1 >> ${loggerStdoutFile}
-    cp -r ${oldSSLPath}/certs/* ${newSSLPath}/certs/ 2>&1 >> ${loggerStdoutFile}
-    cp -r ${oldSSLPath}/private/* ${newSSLPath}/private/ 2>&1 >> ${loggerStdoutFile}
-    cp -r ${oldSSLPath}/newcerts/* ${newSSLPath}/newcerts/ 2>&1 >> ${loggerStdoutFile}
-    cp -r ${oldSSLPath}/crl/* ${newSSLPath}/crl/ 2>&1 >> ${loggerStdoutFile}
-    cp -r ${oldSSLPath}/tsaserial/* ${newSSLPath}/tsaserial/ 2>&1 >> ${loggerStdoutFile}
-    cp -r ${oldSSLPath}/serial/* ${newSSLPath}/serial/ 2>&1 >> ${loggerStdoutFile}
-    cp -r ${oldSSLPath}/crlnumber/* ${newSSLPath}/crlnumber/ 2>&1 >> ${loggerStdoutFile}
-  else
-    echoS "Either ${oldSSLPath} or ${newSSLPath} doesn't exist"
-  fi
+#
+#  oldSSLPath=/usr/lib/ssl
+#  newSSLPath=/usr/local/ssl
+#
+#  if [[ -d ${oldSSLPath} && -d ${newSSLPath} ]]; then
+#
+#    cp -r ${oldSSLPath}/* ${newSSLPath}/ 2>&1 >> ${loggerStdoutFile}
+#    cp -r ${oldSSLPath}/certs/* ${newSSLPath}/certs/ 2>&1 >> ${loggerStdoutFile}
+#    cp -r ${oldSSLPath}/private/* ${newSSLPath}/private/ 2>&1 >> ${loggerStdoutFile}
+#    cp -r ${oldSSLPath}/newcerts/* ${newSSLPath}/newcerts/ 2>&1 >> ${loggerStdoutFile}
+#    cp -r ${oldSSLPath}/crl/* ${newSSLPath}/crl/ 2>&1 >> ${loggerStdoutFile}
+#    cp -r ${oldSSLPath}/tsaserial/* ${newSSLPath}/tsaserial/ 2>&1 >> ${loggerStdoutFile}
+#    cp -r ${oldSSLPath}/serial/* ${newSSLPath}/serial/ 2>&1 >> ${loggerStdoutFile}
+#    cp -r ${oldSSLPath}/crlnumber/* ${newSSLPath}/crlnumber/ 2>&1 >> ${loggerStdoutFile}
+#  else
+#    echoS "Either ${oldSSLPath} or ${newSSLPath} doesn't exist"
+#  fi
 
 }
 
