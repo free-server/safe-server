@@ -79,7 +79,7 @@ installSupportedOpenSSL(){
 
   source ${globalEnvFile}
 
-  [[ $(cat ${globalEnvFile}) == "${openSSLPath}"* ]] || removeLineInFile ${globalEnvFile} PATH && echo "PATH=\"${openSSLPath}/bin:${PATH}\"" >> ${globalEnvFile}
+  [[ $(cat ${globalEnvFile}) == *"${openSSLPath}"* ]] || removeLineInFile ${globalEnvFile} PATH && echo "PATH=\"${openSSLPath}/bin:${PATH}\"" >> ${globalEnvFile}
 
   source ${globalEnvFile}
   which openssl
