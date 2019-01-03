@@ -76,7 +76,7 @@ installSupportedOpenSSL(){
 #    echoS "Either ${oldSSLPath} or ${newSSLPath} doesn't exist"
 #  fi
 
-    [[ $(which openssl) == "*${openSSLPath}"  ]] || echo "export PATH=${openSSLPath}/bin:\$PATH" >> ${bashrc} && . ${bashrc} && openssl version
+    [[ $(which openssl) == "${openSSLPath}"*  ]] || echo "export PATH=${openSSLPath}/bin:\$PATH" >> ${bashrc} && . ${bashrc} && openssl version
 }
 
 uninstallSpdyLay() {
