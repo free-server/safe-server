@@ -113,6 +113,13 @@ sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh test1 test123 10000
 
 * After User created, you should see Terminal echo with client setup guide
 
+## Caveats
+
+* OpenSSL will be upgraded to 1.1.1a
+* A bunch of scripts will be added into /etc/cron.d/ for monitoring safe-server service
+* Let's Encrypt TLS Certs will be applied for your domain
+* Safe server will be automatically up-to-date monthly
+
 ## Change Logs
 
 * [INFO] - 02/01/2019 - [enhancement] - Upgrade nghttpx to 1.35.1 to support TLS1.3 0-RTT for faster connection
