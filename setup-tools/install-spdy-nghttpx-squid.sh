@@ -131,6 +131,8 @@ uninstallSpdyLay() {
   rm -rf ${SPDYSpdyLayTarGzName}
   rm -rf ${SPDYSpdyLayFolderName}
 
+  rm -rf ${spdyInstalledPath}
+
 }
 
 installNgHttpX() {
