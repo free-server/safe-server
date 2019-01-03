@@ -57,7 +57,32 @@ installSupportedOpenSSL(){
   rm -rf ${openSSLVersionUnzipped}
   rm -rf ${openSSLTarGz}
 
-#  echoS "Copy all OpenSSL configuration from  /usr/lib/ssl/"
+  echoS "Configure OpenSSL"
+
+  echo "${openSSLPath}/lib" > /etc/ld.so.conf.d/${openSSLVersionUnzipped}.conf
+  ldconfig -v
+
+  openSSLCRehashPath=/usr/bin/c_rehash
+  openSSLOldBinPath=/usr/bin/openssl
+
+  if [[ -f ${openSSLCRehashPath} ]];then
+    mv ${openSSLCRehashPath} ${openSSLCRehashPath}.BEKUP
+  fi
+
+  if [[ -f ${openSSLOldBinPath} ]];then
+    mv ${openSSLOldBinPath} ${openSSLCRehashPath}.BEKUP
+  fi
+
+  globalEnvFile=/etc/environment
+
+  removeLineInFile ${globalEnvFile} ${openSSLPath}
+  echo "PATH=${openSSLPath}/bin:\${PATH}" >> ${globalEnvFile}
+
+  source ${globalEnvFile}
+  which openssl
+  openssl version
+
+  echoS "Copy all OpenSSL configuration from  /usr/lib/ssl/"
 #
   oldSSLPath=/usr/lib/ssl
   newSSLPath=${openSSLPath}
