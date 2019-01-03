@@ -75,8 +75,11 @@ installSupportedOpenSSL(){
 
   globalEnvFile=/etc/environment
 
-  removeLineInFile ${globalEnvFile} ${openSSLPath}
-  echo "PATH=\"${openSSLPath}/bin:\${PATH}\"" >> ${globalEnvFile}
+#  removeLineInFile ${globalEnvFile} ${openSSLPath}
+
+  source ${globalEnvFile}
+
+  [[ $(cat ${globalEnvFile}) == "${openSSLPath}"* ]] || removeLineInFile ${globalEnvFile} PATH && echo "PATH=\"${openSSLPath}/bin:${PATH}\"" >> ${globalEnvFile}
 
   source ${globalEnvFile}
   which openssl
