@@ -1511,6 +1511,9 @@
 (^|\.)kochava\.com$
 (^|\.)cbsi\.com$
 
+(^|\.)amazon\.com$
+(^|\.)amazonaws\.com$
+
 
 # MyList
 (^|\.)apkmirror\.com$
