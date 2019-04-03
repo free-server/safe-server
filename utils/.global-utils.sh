@@ -591,7 +591,7 @@ getUserInput(){
   userinput=''
 
   if [[ -z ${promptMsg} ]]; then
-    echoS '@example input=$(getUserInput "Provide File" file 3)'
+    echoErr '@example input=$(getUserInput "Provide File" file 3)'
     exit 0
   fi
 
@@ -617,7 +617,7 @@ getUserInput(){
 
     if [[ "${inputValidator}" == "non-empty" ]]; then
       if [[  -z "${userinput}" ]]; then
-        echo "\x1b[0m The input should not be empty.\x1b[0m"
+        echoErr "\x1b[0m The input should not be empty.\x1b[0m"
       else
         break
       fi
