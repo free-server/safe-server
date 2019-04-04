@@ -32,6 +32,17 @@ name = "Tomato's"
 rules = [
     "DOMAIN-MATCH, potatso, REJECT",
 
+    "DOMAIN-SUFFIX, whispersystems.org, PROXY",
+    "DOMAIN-SUFFIX, signal.org, PROXY",
+    "DOMAIN-SUFFIX, atlassian.com, PROXY",
+    "DOMAIN-SUFFIX, atlassian.net, PROXY",
+    "DOMAIN-SUFFIX, aatl-pass.net, PROXY",
+    "DOMAIN-SUFFIX, euronews.com, PROXY",
+
+    "DOMAIN-SUFFIX, cnn.net, PROXY",
+    "DOMAIN-SUFFIX, tmobile.com, PROXY",
+    "DOMAIN-SUFFIX, mozilla.com, PROXY",
+
     "DOMAIN-SUFFIX, m.me, PROXY",
     "DOMAIN-SUFFIX, businessinsider.com, PROXY",
     "DOMAIN-SUFFIX, radiotime.com, PROXY",

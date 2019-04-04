@@ -1488,6 +1488,14 @@
 [proxy_list]
 
 # Safe Server
+
+(^|\.)whispersystems\.org$
+(^|\.)signal\.org$
+(^|\.)atlassian\.com$
+(^|\.)atlassian\.net$
+(^|\.)aatl-pass\.net$
+(^|\.)euronews\.com$
+
 (^|\.)cnn\.net$
 (^|\.)tmobile\.com$
 (^|\.)mozilla\.com$

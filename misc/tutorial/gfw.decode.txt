@@ -1,6 +1,12 @@
 !-------------------Last Updated : Mon Dec 10 04:35:03 UTC 2018
 
 !-------------------https://gist.github.com/netwjx/5596646---------------
+/whispersystems.org/
+/signal.org/
+/atlassian.com/
+/atlassian.net/
+/aatl-pass.net/
+/euronews.com/
 
 /mozilla.org/
 /radiotime.com/
