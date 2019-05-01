@@ -18,9 +18,11 @@ mainUpdate() {
   if [[ "${currentGitCommitHash}" != "${newGitCommitHash}" ]];then
     git stash
     git pull
-    mailNotify "Updating - Safe server update started at $(getCurrentDateTime)"
+    mailNotify "[Start] Safe server update started at $(getCurrentDateTime)"
     /bin/bash ./install-shadowsocks-spdy.sh
-    mailNotify "Updated - Safe server update finished at $(getCurrentDateTime)"
+    /bin/bash ./bin/restart-shadowsocks-r.sh
+    /bin/bash ./bin/restart-spdy-nghttpx-squid.sh
+    mailNotify "[End] Safe server update finished at $(getCurrentDateTime)"
   else
     echoErr "[WARN] FreeServerUpdate: The git remote ${freeServerRepo} is identical as local git repo ${gitRepoFreeServerPath}"
     git log --name-status HEAD^..HEAD
