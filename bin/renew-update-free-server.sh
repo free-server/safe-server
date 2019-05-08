@@ -4,7 +4,23 @@ source /opt/.global-utils.sh
 
 main() {
   exitOnFreeServerUpdating
+  mustExportGlobalEnvBeforeAutoUpdate
   mainUpdate
+}
+
+mustExportGlobalEnvBeforeAutoUpdate() {
+
+  if [[ -z "${currentLoggedInUserGlobalEnv}" ]];then
+     mailNotify "[ERROR] AutoUpdate: currentLoggedInUserGlobalEnv must be set in latest .global-utils.sh. Try manually reinstall SafeServer"
+     exit 1
+  fi
+
+  if [[ ! -f "${currentLoggedInUserGlobalEnv}" ]];then
+     mailNotify "[ERROR] AutoUpdate: file ${currentLoggedInUserGlobalEnv} must be populated before auto-upgrade. Try manually reinstall SafeServer "
+     exit 1
+  fi
+
+  env - `cat ${currentLoggedInUserGlobalEnv}` /bin/bash
 }
 
 

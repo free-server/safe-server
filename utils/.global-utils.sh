@@ -68,6 +68,7 @@ export configDirBackup=/opt/free-server-config-bak
 export configDirBackupDate=/opt/free-server-config-bak-$currentDate
 
 export freeServerGlobalEnv=${configDir}/envrc
+export currentLoggedInUserGlobalEnv=${configDir}/user_envrc
 
 if [[ -f ${freeServerGlobalEnv} ]]; then
     source ${freeServerGlobalEnv}
