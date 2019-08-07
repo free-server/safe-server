@@ -7,6 +7,8 @@ echoS "Write to crontab for auto restart"
 
 /bin/bash ${binDir}/cron-reboot-daily-generate-cron.d.sh  2>&1 >> ${loggerStdoutFile}
 
+/bin/bash ${binDir}/cron-cleanup-var-log-daily-generate-cron.d  2>&1 >> ${loggerStdoutFile}
+
 catchError=$(/bin/bash ${binDir}/cron-renew-letsencrypt.sh  2>&1 >> ${loggerStdoutFile})
 
 # smart service watcher for every 2 minutes
