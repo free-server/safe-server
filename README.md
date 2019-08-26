@@ -122,6 +122,7 @@ sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh test1 test123 10000
 
 ## Change Logs
 
+* [INFO] - 08/26/2019 - [enhancement] - Upgrade nghttpx to 1.39.2
 * [INFO] - 05/01/2019 - [enhancement] - Add gfwlis-banAD.acl for ssr android
 * [INFO] - 02/01/2019 - [enhancement] - Upgrade nghttpx to 1.35.1 to support TLS1.3 0-RTT for faster connection
 * [INFO] - 13/12/2018 - [feature] - Add auto update free-server itself monthly
