@@ -465,6 +465,16 @@ getIp(){
 }
 export -f getIp
 
+isMyPublicIpMatchedFQDN(){
+  fqdn=$1
+  publicIpParsed=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com)
+  publicIpOfDNS=$(dig +short ${fqdn})
+  if [[ "${publicIpParsed}" == "\"${publicIpOfDNS}\"" ]]; then
+    echo "Matched, ${publicIpParsed} to ${fqdn}"
+  fi
+}
+export -f isMyPublicIpMatchedFQDN
+
 #####
 # download a file to folder
 #
@@ -775,15 +785,26 @@ setServerName() {
 
   serverName=$(getUserInput "Input \x1b[46m Server Domain \x1b[0m (e.g. server1.free-server.me): " non-empty 3)
 
+
   if [[ -z ${serverName} ]]; then
 
     echoErr "Sever Name should not be empty"
 
-  else
-
-    echo "export freeServerName=${serverName}" >> ${freeServerGlobalEnv}
+    return 1
 
   fi
+
+  isServerNameMatchedPublicIp=$(isMyPublicIpMatchedFQDN ${serverName})
+
+  if [[ -z "${isServerNameMatchedPublicIp}" ]];then
+    echoErr "Sever Name ${serverName} is not matched with current Public IP of the server. Abort."
+
+    return 2
+  fi
+
+  echo ${isServerNameMatchedPublicIp}
+
+  echo "export freeServerName=${serverName}" >> ${freeServerGlobalEnv}
 
 
 }

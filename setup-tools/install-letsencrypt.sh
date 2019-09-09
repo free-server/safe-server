@@ -8,8 +8,10 @@ main() {
     installLetsencrypt
 #    linkBinUtilAsShortcut
     prepareLetEncryptEnv
-    
+
     getCert
+    checkIfCertFetchSuccess
+
     afterLetEncryptEnv
     enableAutoRenew
 
@@ -74,6 +76,13 @@ getCert() {
 enableAutoRenew() {
     echo "6 50 *  * 1 root ${binDir}/renew-letsencrypt.sh" > /etc/cron.d/renew_letsencrypt
     # run for first time
+}
+
+checkIfCertFetchSuccess(){
+
+  if [[ ! -f "${letsEncryptCertPath}" ]];then
+    exitOnError "[ERROR] Let's Encrypt certs not found in ${letsEncryptCertPath}. Aborted."
+  fi
 }
 
 #linkBinUtilAsShortcut() {
