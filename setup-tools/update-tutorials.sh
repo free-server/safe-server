@@ -5,6 +5,8 @@ source /opt/.global-utils.sh
 main() {
 
   updateServerUrl
+
+  isDocSiteAccessible
 }
 
 updateServerUrl() {
@@ -18,6 +20,13 @@ updateServerUrl() {
   find ${miscDir} -type f -exec bash -c "replaceStringInFile {} ${serverUrlPlaceholder} ${httpsFreeServerUrl} " \;
   find ${miscDir} -type f -exec bash -c "replaceStringInFile {} ${serverNamePlaceholder} ${freeServerName} " \;
 
+}
+
+isDocSiteAccessible(){
+  curlGet=$(curl ${httpsFreeServerUrl} | grep "自由")
+  if [[ -z "${curlGet}" ]];then
+    echoErr "${httpsFreeServerUrl} is not accessible."
+  fi
 }
 
 main "$@"

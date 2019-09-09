@@ -12,6 +12,12 @@ exitOnFreeServerUpdating
 
 cd ${shadowsocksRFolder}
 
+isAnyUserCreated=$(cat ${shadowsocksRConfigJson} | grep "method")
+
+if [[ -z "${isAnyUserCreated}" ]];then
+  exit 0
+fi
+
 isProcessRunning=$(ps aux | awk '$0~v' v="-c\\ ${shadowsocksRConfigJson}")
 
 if [[ -z ${isProcessRunning} ]]; then

@@ -26,6 +26,13 @@ if [[ ! -s ${letsEncryptCertPath} ]]; then
   exit 0
 fi
 
+isAnyUserCreated=$(cat ${SPDYConfig})
+
+if [[ -z "${isAnyUserCreated}" ]];then
+  exit 0
+fi
+
+
 runCommandIfPortClosed "${SPDYForwardBackendSquidPort}"  "${binDir}/restart-spdy-squid.sh"
 
 

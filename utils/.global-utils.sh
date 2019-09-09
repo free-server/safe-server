@@ -1075,6 +1075,12 @@ export -f isSquidRunning
 
 isSSRRunning(){
     sleep 3
+    isAnyUserCreated=$(cat ${shadowsocksRConfigJson} | grep "method")
+
+    if [[ -z "${isAnyUserCreated}" ]];then
+      return 0
+    fi
+
     isProcessRunning=$(ps aux | awk '$0~v' v="-c\\ ${shadowsocksRConfigJson}")
 
     if [[ -z ${isProcessRunning} ]]; then
