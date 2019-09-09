@@ -14,6 +14,11 @@ shadowsocksRPort=$3
 SPDYPort=$4
 emailAddress=$5
 
+isSpecialCharsDetected "$user" && echo "Special chars not allowed for $user" && exit 1
+isSpecialCharsDetected "$pass" && echo "Special chars not allowed for $pass" && exit 1
+isSpecialCharsDetected "$shadowsocksRPort" && echo "Special chars not allowed for $shadowsocksRPort" && exit 1
+isSpecialCharsDetected "$SPDYPort" && echo "Special chars not allowed for $SPDYPort" && exit 1
+
 # both password and port should be given
 
 ( [[ -z "${user}" ]] || [[ -z "${pass}" ]] || [[ -z "${shadowsocksRPort}" ]] || [[ -z "${SPDYPort}" ]] ) \

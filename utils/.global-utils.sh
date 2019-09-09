@@ -1089,6 +1089,15 @@ isSSRRunning(){
 }
 export -f isSSRRunning
 
+isSpecialCharsDetected(){
+
+  if [[ ! -z "$1" ]];then
+    echo "$1" | grep -v "^[a-zA-Z0-9 ]*$"
+  fi
+
+}
+export -f isSpecialCharsDetected
+
 isLetsEncryptInstalled(){
 
     if [[ ! -s ${letsEncryptKeyPath} ]]; then
