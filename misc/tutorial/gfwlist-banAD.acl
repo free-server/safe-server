@@ -1489,6 +1489,16 @@
 
 # Safe Server
 
+(^|\.)bbc\.com$
+(^|\.)bbc\.co\.uk$
+(^|\.)touchingapp\.com$
+(^|\.)acast\.com$
+(^|\.)urbanairship\.com$
+(^|\.)shwchurch\.org$
+(^|\.)wordnik\.com$
+(^|\.)chinadigitaltimes\.net$
+(^|\.)okta\.com$
+
 (^|\.)whispersystems\.org$
 (^|\.)signal\.org$
 (^|\.)atlassian\.com$
@@ -1498,6 +1508,7 @@
 
 (^|\.)cnn\.net$
 (^|\.)tmobile\.com$
+(^|\.)tmocache\.com$
 (^|\.)mozilla\.com$
 (^|\.)radiotime\.com$
 (^|\.)vocabulary\.com$
