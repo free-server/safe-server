@@ -41,6 +41,7 @@ rules = [
     "DOMAIN-SUFFIX, bbc.co.uk, PROXY",
     "DOMAIN-SUFFIX, whispersystems.org, PROXY",
     "DOMAIN-SUFFIX, signal.com, PROXY",
+    "DOMAIN-SUFFIX, zoom.us, PROXY",
 
     "DOMAIN-SUFFIX, vocabulary.com, PROXY",
     "DOMAIN-SUFFIX, vocab.com, PROXY",

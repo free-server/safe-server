@@ -4,6 +4,7 @@
 var proxy = "SOCKS5 localhost:58097";
 
 var rules = [
+  "/zoom.us/",
   "/signal.com/",
   "/whispersystems.org/",
   "/bbc.com/",
@@ -15,6 +16,9 @@ var rules = [
   "/wordnik.com/",
   "/chinadigitaltimes.net/",
   "/okta.com/",
+  "/euronews.com/",
+  "/aatl-pass.net/",
+  "/atlassian/",
   "/asiatimes.com/",
   "/tmobile.com/",
   "/tmocache.com/",
