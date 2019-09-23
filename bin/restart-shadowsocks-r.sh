@@ -52,7 +52,7 @@ echo -e "{ \n\
 }\
 " > ${shadowsocksRConfigJson}
 
-echo -e "Restarting all shadowsocks-R instances" | wall
+#echo -e "Restarting all shadowsocks-R instances" | wall
 
 killProcessesByPattern server.py > /dev/null 2>&1
 python server.py -d stop > /dev/null 2>&1

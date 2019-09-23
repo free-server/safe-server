@@ -9,7 +9,7 @@ if [[ -z $processName || -z $commandToRun ]];then
 fi
 getRunningProcess=$(ps aux | gawk "/$1/ {print}" | grep -v gawk | grep -v "$0")
 if [ -z "$getRunningProcess" ]; then
-        echo -e "Process $1 is not existed. Execute command \`$commandToRun\` now \n\n" | wall
+#        echo -e "Process $1 is not existed. Execute command \`$commandToRun\` now \n\n" | wall
         eval "$commandToRun"
 else
  echo -e "$getRunningProcess\n\n"
