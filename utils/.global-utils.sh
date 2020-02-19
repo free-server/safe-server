@@ -1074,17 +1074,19 @@ export -f isSquidRunning
 
 isSSRRunning(){
     sleep 3
-    isAnyUserCreated=$(cat ${shadowsocksRConfigJson} | grep "method")
+    isAnyUserCreated=$(cat ${shadowsocksRConfigJson} | grep "\"port_password\":{ }")
 
     if [[ -z "${isAnyUserCreated}" ]];then
-      return 0
+      return 2
     fi
 
     isProcessRunning=$(ps aux | awk '$0~v' v="-c\\ ${shadowsocksRConfigJson}")
 
     if [[ -z ${isProcessRunning} ]]; then
         echoErr "[ERROR]: SSR is not running."
+        return 1
     fi
+    return 0
 }
 export -f isSSRRunning
 

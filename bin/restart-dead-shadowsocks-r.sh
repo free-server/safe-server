@@ -12,15 +12,10 @@ exitOnFreeServerUpdating
 
 cd ${shadowsocksRFolder}
 
-isAnyUserCreated=$(cat ${shadowsocksRConfigJson} | grep "method")
+isSSRRunning
+isSSRRunningCheckingCode=$?
 
-if [[ -z "${isAnyUserCreated}" ]];then
-  exit 0
-fi
-
-isProcessRunning=$(ps aux | awk '$0~v' v="-c\\ ${shadowsocksRConfigJson}")
-
-if [[ -z ${isProcessRunning} ]]; then
+if [[ ${isSSRRunningCheckingCode} == 1 ]]; then
     echo -e "Restart SSR with $shadowsocksRConfigJson" | wall
     python server.py -c ${shadowsocksRConfigJson} >> /dev/null 2&>1 &
 fi
