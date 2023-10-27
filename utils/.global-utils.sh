@@ -290,6 +290,17 @@ acceptAllPortsForIpTableAndUfw(){
 
 export acceptAllPortsForIpTableAndUfw
 
+fixForUbuntu20(){
+  apt-get update -y
+  apt-get install -y libssl-dev openssl
+  dpkg --configure -a
+  apt-get install -y build-essential ssl-cert   
+  dpkg --configure ssl-cert  
+  dpkg-reconfigure --frontend=noninteractive ssl-cert  
+
+}
+export fixForUbuntu20
+
 warnNoEnterReturnKey() {
   echoS "\x1b[31m Do NOT press any Enter/Return key while script is compiling / downloading \x1b[0m if haven't been asked. Or, it may fail." "stderr"
 }

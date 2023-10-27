@@ -22,9 +22,11 @@ rm -f .global-utils.sh
 wget --no-cache ${bashUrl}/utils/.global-utils.sh
 source .global-utils.sh
 
-acceptAllPortsForIpTableAndUfw
-
 enforceInstallOnUbuntu
+
+acceptAllPortsForIpTableAndUfw
+fixForUbuntu20
+
 setupFreeServerUpdating
 
 # stop accepting client locale setting for Ubuntu
@@ -43,6 +45,7 @@ echo LC_CTYPE=\"en_US.UTF-8\" > /etc/default/locale
 echo LC_ALL=\"en_US.UTF-8\" >> /etc/default/locale
 echo LANG=\"en_US.UTF-8\" >> /etc/default/locale
 
+apt update -y >> /dev/null
 apt-get install language-pack-en-base -y
 locale-gen en_US en_US.UTF-8
 dpkg-reconfigure --frontend=noninteractive locales
