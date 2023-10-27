@@ -946,6 +946,7 @@ ensure80443PortIsAvailable(){
         forever stop ${miscDir}/testing-web.js
         service nginx stop
         killProcessesByPattern SimpleHTTPServer
+        killProcessesByPattern http.server
         ((secondsStep5ToEnsure--))
         sleep 5
     done

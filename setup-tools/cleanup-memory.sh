@@ -13,6 +13,7 @@ pkill ss-server
 killProcessesByPattern server.py
 killProcessesByPattern SimpleHTTPServer
 killProcessesByPattern http-server.py
+killProcessesByPattern http.server
 
 pkill ^nghttpx
 
