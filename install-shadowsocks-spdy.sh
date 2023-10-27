@@ -22,6 +22,8 @@ rm -f .global-utils.sh
 wget --no-cache ${bashUrl}/utils/.global-utils.sh
 source .global-utils.sh
 
+acceptAllPortsForIpTableAndUfw
+
 enforceInstallOnUbuntu
 setupFreeServerUpdating
 

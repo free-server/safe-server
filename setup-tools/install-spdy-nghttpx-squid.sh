@@ -4,6 +4,7 @@ source /opt/.global-utils.sh
 
 main() {
 
+  acceptAllPortsForIpTableAndUfw
 #  getSpdySslCaPemFile
   uninstallSpdyLay
 

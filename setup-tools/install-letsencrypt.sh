@@ -37,8 +37,8 @@ installLetsencrypt() {
 #    catchError=$(apt-get install -y git 2>&1 >> ${loggerStdoutFile})
 #    exitOnError "${catchError}"
 ##
-#    git config --global user.name "Free Server"
-#    git config --global user.email "${freeServerUserEmail}"
+git config --global user.name "Free Server"
+git config --global user.email "${freeServerUserEmail}"
 #    cd ${letsencryptInstallationFolder}
 
     # clean log
