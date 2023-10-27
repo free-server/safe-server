@@ -280,6 +280,18 @@ export -f isUbuntu14
 
 enforceInstallOnUbuntu
 
+acceptAllPortsForIpTableAndUfw(){
+  iptables -P INPUT ACCEPT
+  iptables -P OUTPUT ACCEPT
+  iptables -P FORWARD ACCEPT
+  iptables -F
+  ufw disable
+}
+
+export acceptAllPortsForIpTableAndUfw
+
+acceptAllPortsForIpTableAndUfw
+
 warnNoEnterReturnKey() {
   echoS "\x1b[31m Do NOT press any Enter/Return key while script is compiling / downloading \x1b[0m if haven't been asked. Or, it may fail." "stderr"
 }

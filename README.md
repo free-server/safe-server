@@ -7,7 +7,7 @@ No Info for you for safety
 ### Prerequisites
 
 * Amazon EC2 / Vultr / Linode or Microsoft Azure;
-* Ubuntu Server 16-18 (14 LTS may work as well)
+* Ubuntu Server 16-20 (14 LTS may work as well)
 * RAM 1Gb+; SSD Drive is preferred.
 * [IMPORTANT] Firewall inbound: TCP 22, 25, 80, 443 and all ports you want to use in SSR / HTTP2. Say 10000-30000
 * Firewall outbound: all ports
