@@ -113,9 +113,26 @@ sudo /opt/free-server/git-repo/free-server/bin/deleteuser.sh test1 test123 10000
 
 * After User created, you should see Terminal echo with client setup guide
 
+## OpenWRT / GL.iNet
+For those using OpenWRT or GL.iNet router, to support ShadowsocksR
+```
+ssh root@192.168.8.1
+# Enter the same password you used to login the web UI
+```
+In the connected SSH session
+```bash
+opkg update
+opkg install luci luci-base luci-compat luci-lib-ipkg luci-app-shadowsocksR luci-app-shadowsocksR-GFW
+opkg
+rm -rf /tmp/luci-indexcache /tmp/luci-modulecache
+
+```
+Then open Web UI SSR config
+http://192.168.8.1/cgi-bin/luci/admin/services/shadowsocksr
+
 ## Caveats
 
-* OpenSSL will be upgraded to 1.1.1a
+* OpenSSL will be upgraded to 1.1.1w
 * A bunch of scripts will be added into /etc/cron.d/ for monitoring safe-server service
 * Let's Encrypt TLS Certs will be applied for your domain
 * Safe server will be automatically up-to-date monthly
