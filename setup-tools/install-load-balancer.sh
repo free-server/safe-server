@@ -23,4 +23,6 @@ linkConfig() {
 	echo CONFIG=\"${configDir}/haproxy.conf\" >> /etc/default/haproxy
 }
 
+sendSSHConnectionSignal
+
 init "$@"

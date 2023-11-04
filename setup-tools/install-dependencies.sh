@@ -13,6 +13,7 @@ installDeps() {
     apt-get -y install libexpat1-dev libpython-dev libpython2.7-dev python-dev python3 2>&1 >> ${loggerStdoutFile}
 }
 
+sendSSHConnectionSignal
 
 main "$@"
 

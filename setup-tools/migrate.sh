@@ -33,6 +33,8 @@ migrateOldToNew() {
 
 }
 
+sendSSHConnectionSignal
+
 main "$@"
 
 exit 0

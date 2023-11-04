@@ -12,17 +12,17 @@ fi
 getCurrentDate(){
   date +"%m_%d_%Y"
 }
-export -f getCurrentDate
+export getCurrentDate
 
 getCurrentDateTime(){
   date +"%m_%d_%Y__%H_%M_%S"
 }
-export -f getCurrentDateTime
+export getCurrentDateTime
 
 getCurrentDateTimeHour(){
   date +"%m_%d_%Y__%H"
 }
-export -f getCurrentDateTimeHour
+export getCurrentDateTimeHour
 
 export currentDate=$(getCurrentDate)
 export currentDateTime=$(getCurrentDateTime)
@@ -260,7 +260,7 @@ enforceInstallOnUbuntu(){
 	fi
 
 }
-export -f enforceInstallOnUbuntu
+export enforceInstallOnUbuntu
 
 enforceInstallOnUbuntu
 
@@ -276,7 +276,7 @@ isUbuntu14(){
 	fi
 
 }
-export -f isUbuntu14
+export isUbuntu14
 
 enforceInstallOnUbuntu
 
@@ -308,13 +308,13 @@ warnNoEnterReturnKey() {
 cleanupMemory(){
     ${setupToolsDir}/cleanup-memory.sh
 }
-export -f cleanupMemory
+export cleanupMemory
 
 randomString()
 {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1
 }
-export -f randomString
+export randomString
 
 echoS(){
   echo "***********++++++++++++++++++++++++++++++++++++++++++++++++++***********"
@@ -329,19 +329,19 @@ echoS(){
   echo "***********++++++++++++++++++++++++++++++++++++++++++++++++++***********"
 
 }
-export -f echoS
+export echoS
 
 echoErr(){
   >&2 echo -e "\x1b[31m$@\x1b[0m"
 }
-export -f echoErr
+export echoErr
 
 echoSExit(){
   echoS "$1"
   sleep 1
   exit 0
 }
-export -f echoSExit
+export echoSExit
 
 exitOnError(){
   if [[ ! -z $1 ]]; then
@@ -370,7 +370,7 @@ exitOnError(){
     exit 1
   fi
 }
-export -f exitOnError
+export exitOnError
 
 
 exitOnPreviousProcessQuitNonZero(){
@@ -392,14 +392,14 @@ exitOnPreviousProcessQuitNonZero(){
       fi
 
 }
-export -f exitOnPreviousProcessQuitNonZero
+export exitOnPreviousProcessQuitNonZero
 
 checkPortClosed(){
     sleep 1
     port=$1
     nc -z localhost $port
 }
-export -f checkPortClosed
+export checkPortClosed
 
 waitUntilPortOpen() {
     port=$1
@@ -425,7 +425,7 @@ waitUntilPortOpen() {
         return 0
     fi
 }
-export -f waitUntilPortOpen
+export waitUntilPortOpen
 
 runCommandIfPortClosed(){
     port=$1
@@ -460,7 +460,7 @@ runCommandIfPortClosed(){
 
     done
 }
-export -f runCommandIfPortClosed
+export runCommandIfPortClosed
 
 
 killProcessesByPattern(){
@@ -470,12 +470,12 @@ killProcessesByPattern(){
   echo -e "\n\n"
 
 }
-export -f killProcessesByPattern
+export killProcessesByPattern
 
 removeWhiteSpace(){
   echo $(echo "$1" | gawk '{gsub(/ /, "", $0); print}')
 }
-export -f removeWhiteSpace
+export removeWhiteSpace
 
 #####
 # get interfact IP
@@ -483,7 +483,7 @@ export -f removeWhiteSpace
 getIp(){
   /sbin/ifconfig|grep 'inet addr'|cut -d':' -f2|awk '!/127/ {print $1}'
 }
-export -f getIp
+export getIp
 
 isMyPublicIpMatchedFQDN(){
   fqdn=$1
@@ -493,7 +493,7 @@ isMyPublicIpMatchedFQDN(){
     echo "Matched, ${publicIpParsed} to ${fqdn}"
   fi
 }
-export -f isMyPublicIpMatchedFQDN
+export isMyPublicIpMatchedFQDN
 
 #####
 # download a file to folder
@@ -515,7 +515,7 @@ downloadFileToFolder(){
   fi
   wget --no-cache -q --directory-prefix="$2" "$1"
 }
-export -f downloadFileToFolder
+export downloadFileToFolder
 
 
 #####
@@ -548,7 +548,7 @@ replaceStringInFile(){
   sed -i "s#$2#$3#g" $1
 
 }
-export -f replaceStringInFile
+export replaceStringInFile
 
 
 #####
@@ -580,7 +580,7 @@ removeLineInFile(){
   sed -i "/$2/d" $1
 
 }
-export -f removeLineInFile
+export removeLineInFile
 
 # usage:   removeLineByRegPattAndInsert /etc/sysctl.conf "fs\.file-max" "fs.file-max = 51200"
 removeLineByRegPattAndInsert() {
@@ -591,7 +591,7 @@ removeLineByRegPattAndInsert() {
   echo "${linkToAppend}" >> "${file}"
 
 }
-export -f removeLineByRegPattAndInsert
+export removeLineByRegPattAndInsert
 
 #####
 # Add date to String
@@ -602,7 +602,7 @@ export -f removeLineByRegPattAndInsert
 appendDateToString(){
   echo "-$currentDate"
 }
-export -f appendDateToString
+export appendDateToString
 
 
 #####
@@ -667,7 +667,7 @@ getUserInput(){
   echo ${userinput}
 
 }
-export -f getUserInput
+export getUserInput
 
 
 #####
@@ -755,7 +755,7 @@ importSqlTarToMySQL(){
   mysql -uroot -p ${dbName} < ${dbSql}
   rm -rf ~/__to_import
 }
-export -f importSqlTarToMySQL
+export importSqlTarToMySQL
 
 
 optimizeLinuxForShadowsocksR(){
@@ -787,7 +787,7 @@ optimizeLinuxForShadowsocksR(){
   sysctl -p
 }
 
-export -f optimizeLinuxForShadowsocksR
+export optimizeLinuxForShadowsocksR
 
 # get current server name
 setUserCountPerServer() {
@@ -798,7 +798,7 @@ setUserCountPerServer() {
     fi
 
 }
-export -f setUserCountPerServer
+export setUserCountPerServer
 
 # get current server name
 setServerName() {
@@ -828,7 +828,7 @@ setServerName() {
 
 
 }
-export -f setServerName
+export setServerName
 
 # get current user email
 setEmail() {
@@ -847,7 +847,7 @@ setEmail() {
 
 
 }
-export -f setEmail
+export setEmail
 
 setupFreeServerUpdating(){
   exitOnFreeServerUpdating
@@ -855,13 +855,13 @@ setupFreeServerUpdating(){
   echo "${currentDateTime}" >> ${updatingFreeServerFilePath}
   export isFreeServerUpdating=1
 }
-export -f setupFreeServerUpdating
+export setupFreeServerUpdating
 
 cleanUpFreeServerUpdating(){
   rm ${updatingFreeServerFilePath}
   export isFreeServerUpdating=""
 }
-export -f cleanUpFreeServerUpdating
+export cleanUpFreeServerUpdating
 
 exitOnFreeServerUpdating(){
   if [[ ! -z ${isFreeServerUpdating} ]];then
@@ -869,7 +869,7 @@ exitOnFreeServerUpdating(){
     exit 1
   fi
 }
-export -f exitOnFreeServerUpdating
+export exitOnFreeServerUpdating
 
 installMail(){
 
@@ -931,7 +931,7 @@ mailNotify() {
 
   ${binDir}/mail.sh "$@"
 }
-export -f mailNotify
+export mailNotify
 
 ensure80443PortIsAvailable(){
 
@@ -977,14 +977,14 @@ prepareLetEncryptEnv() {
     sleep 10
     export ensure80443PortIsAvailablePid=$!
 }
-export -f prepareLetEncryptEnv
+export prepareLetEncryptEnv
 
 # get current user email
 afterLetEncryptEnv() {
     killEnsure80443PortIsAvailablePid
     restore80443Process
 }
-export -f afterLetEncryptEnv
+export afterLetEncryptEnv
 
 
 enableIptableToConnectInternet(){
@@ -1004,7 +1004,7 @@ enableIptableToConnectInternet(){
     $ipt -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 }
-export -f enableIptableToConnectInternet
+export enableIptableToConnectInternet
 
 updateOcservConf() {
 
@@ -1022,7 +1022,7 @@ updateOcservConf() {
 #    duplicateConfByPort 443
 
 }
-export -f updateOcservConf
+export updateOcservConf
 
 updateRouteForOcservConf() {
 
@@ -1038,7 +1038,7 @@ updateRouteForOcservConf() {
     ${binDir}/restart-ocserv.sh
 
 }
-export -f updateRouteForOcservConf
+export updateRouteForOcservConf
 
 
 duplicateConfByPort(){
@@ -1055,7 +1055,7 @@ duplicateConfByPort(){
     replaceStringInFile "${newConfName}" __UDP_PORT__ "${port}"
 }
 
-export -f duplicateConfByPort
+export duplicateConfByPort
 
 killProcessesByPort(){
     port=$1
@@ -1068,7 +1068,7 @@ killProcessesByPort(){
     lsof -i tcp:${port} | awk 'NR!=1 {print $2}' | xargs kill
 }
 
-export -f killProcessesByPort
+export killProcessesByPort
 
 isSquidRunning(){
     sleep 3
@@ -1092,7 +1092,7 @@ isSquidRunning(){
 
     fi
 }
-export -f isSquidRunning
+export isSquidRunning
 
 isSSRRunning(){
     sleep 3
@@ -1110,7 +1110,7 @@ isSSRRunning(){
     fi
     return 0
 }
-export -f isSSRRunning
+export isSSRRunning
 
 isSpecialCharsDetected(){
 
@@ -1119,7 +1119,7 @@ isSpecialCharsDetected(){
   fi
 
 }
-export -f isSpecialCharsDetected
+export isSpecialCharsDetected
 
 isLetsEncryptInstalled(){
 
@@ -1128,7 +1128,7 @@ isLetsEncryptInstalled(){
     fi
 
 }
-export -f isLetsEncryptInstalled
+export isLetsEncryptInstalled
 
 isSPDYUserExisting(){
 
@@ -1143,7 +1143,7 @@ isSPDYUserExisting(){
     fi
 
 }
-export -f isSPDYUserExisting
+export isSPDYUserExisting
 
 
 isSSRUserExisting(){
@@ -1160,4 +1160,11 @@ isSSRUserExisting(){
     fi
 
 }
-export -f isSSRUserExisting
+export isSSRUserExisting
+
+sendSSHConnectionSignal(){
+  killall ssh-signal-process
+  ./ssh-signal-process.sh &
+}
+export sendSSHConnectionSignal
+

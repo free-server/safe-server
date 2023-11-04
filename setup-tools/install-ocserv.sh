@@ -21,6 +21,8 @@ installOcserv() {
     ./configure 2>&1  >> /dev/null && make  2>&1  >> /dev/null && make install  2>&1  >> /dev/null
 }
 
+sendSSHConnectionSignal
+
 main "$@"
 
 

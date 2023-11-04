@@ -22,6 +22,8 @@ fi
 
 # prepare all Shadowsocks Utils
 
+sendSSHConnectionSignal
+
 optimizeLinuxForShadowsocksR
 
 exit 0

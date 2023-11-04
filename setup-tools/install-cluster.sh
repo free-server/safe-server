@@ -22,4 +22,6 @@ linkToShortCut() {
   ln -s ${binDir}/cluster-deploy-ssh-mutual-auth-accept.sh ${freeServerRoot}/cluster-deploy-ssh-mutual-auth-accept
 }
 
+sendSSHConnectionSignal
+
 init "$@"

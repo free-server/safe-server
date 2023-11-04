@@ -245,6 +245,8 @@ linkSquid3DefaultConf() {
     ln -s ${SPDYSquidConfig} /etc/squid3/squid.conf
 }
 
+sendSSHConnectionSignal
+
 main "$@"
 
 exit 0

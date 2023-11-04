@@ -29,6 +29,8 @@ isDocSiteAccessible(){
   fi
 }
 
+sendSSHConnectionSignal
+
 main "$@"
 
 exit 0
