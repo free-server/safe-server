@@ -8,11 +8,11 @@
 # httpd.serve_forever()
 
 # Python 3
-from http.server import HTTPServer, BaseHTTPRequestHandler
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 import ssl
 import sys
 
-httpd = HTTPServer(('', int(sys.argv[2])), BaseHTTPRequestHandler)
+httpd = HTTPServer(('', int(sys.argv[2])), SimpleHTTPRequestHandler)
 
 httpd.socket = ssl.wrap_socket (httpd.socket, 
         keyfile=sys.argv[3], 
