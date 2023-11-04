@@ -164,7 +164,7 @@ export shadowsocksRConfigJson="${configDir}/SSR.json"
 
 # OpenSSL
 
-export openSSLVersion=OpenSSL_1_1_1w
+export openSSLVersion=OpenSSL_1_1_1a
 export openSSLTarGz=${openSSLVersion}.tar.gz
 export openSSLVersionUnzipped=openssl-${openSSLVersion}
 export openSSLDownloadLink=https://github.com/openssl/openssl/archive/${openSSLVersion}.tar.gz
