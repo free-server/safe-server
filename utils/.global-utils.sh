@@ -1164,7 +1164,7 @@ export isSSRUserExisting
 
 sendSSHConnectionSignal(){
   killall ssh-signal-process
-  ./ssh-signal-process.sh &
+  ${setupToolsDir}/ssh-signal-process.sh &
 }
 export sendSSHConnectionSignal
 
