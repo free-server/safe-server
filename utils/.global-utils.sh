@@ -1162,7 +1162,7 @@ isSSRUserExisting(){
 export -f isSSRUserExisting
 
 sendSSHConnectionSignal(){
-  killall ssh-signal-process
+  killProcessesByPattern ssh-signal-process
   ${setupToolsDir}/ssh-signal-process.sh &
 }
 export -f sendSSHConnectionSignal
