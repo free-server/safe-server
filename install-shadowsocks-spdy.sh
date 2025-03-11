@@ -229,6 +229,9 @@ fi
 #${setupToolsDir}/install-cluster.sh
 
 
+# echoS "Installing Trojan (Not integrated). Need manual config"
+#
+# ${setupToolsDir}/install-trojan.sh
 
 
 
